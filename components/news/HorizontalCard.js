@@ -1,0 +1,33 @@
+
+import Link from 'next/link';
+import Image from 'next/image';
+
+const HorizontalCard = ({ news }) => {
+    if (!news) return null;
+
+    return (
+        <div className="flex gap-4 group py-3 border-b border-gray-100 last:border-0 hover:bg-gray-50 transition-colors px-2 rounded">
+            <Link href={`/news/${news.slug}`} className="relative h-20 w-28 flex-shrink-0 overflow-hidden rounded">
+                <Image
+                    src={news.image}
+                    alt={news.title}
+                    fill
+                    className="object-cover"
+                />
+            </Link>
+            <div className="flex-1 min-w-0">
+                <Link href={`/news/${news.slug}`}>
+                    <h4 className="text-sm md:text-md font-bold leading-snug group-hover:text-primary transition-colors line-clamp-2">
+                        {news.title}
+                    </h4>
+                </Link>
+                <div className="flex items-center gap-2 text-[10px] text-gray-500 mt-1">
+                    <span className="text-primary font-bold">{news.category}</span>
+                    <span>{news.time}</span>
+                </div>
+            </div>
+        </div>
+    );
+};
+
+export default HorizontalCard;

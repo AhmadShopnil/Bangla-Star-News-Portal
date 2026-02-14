@@ -1,0 +1,53 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #EE1D23;
+  /* Standard news red */
+  --color-secondary: #212121;
+  --font-bengali: 'Hind Siliguri', sans-serif;
+}
+
+/* Custom styles for news theme */
+@layer base {
+  body {
+    @apply bg-gray-50 text-gray-900;
+  }
+}
+
+@layer components {
+  .container {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  .news-card-hover {
+    transition: all 500ms;
+  }
+
+  .news-card-hover:hover {
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    transform: translateY(-4px);
+  }
+
+  .section-title {
+    @apply text-2xl font-black text-gray-900 border-t-4 border-primary pt-2 mb-6 uppercase tracking-tight;
+  }
+}
+
+/* Animation for news ticker */
+@keyframes ticker {
+  0% {
+    transform: translateX(100%);
+  }
+
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+.animate-ticker {
+  animation: ticker 20s linear infinite;
+}
+
+.animate-ticker:hover {
+  animation-play-state: paused;
+}

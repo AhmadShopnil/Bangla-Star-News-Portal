@@ -1,0 +1,139 @@
+
+import Header from '@/components/common/Header';
+import Footer from '@/components/common/Footer';
+import BreakingNews from '@/components/home/BreakingNews';
+import ShareButtons from '@/components/news/ShareButtons';
+import PrintButton from '@/components/news/PrintButton';
+import FBComments from '@/components/news/FBComments';
+import HorizontalCard from '@/components/news/HorizontalCard';
+import { getNewsBySlug, getBreakingNews, getNews } from '@/lib/api';
+import Image from 'next/image';
+import { notFound } from 'next/navigation';
+import Container from '@/components/common/Container';
+
+export async function generateMetadata({ params }) {
+    const { slug } = params;
+    const news = await getNewsBySlug(slug);
+    if (!news) return { title: 'Not Found' };
+
+    return {
+        title: `${news.title} | বাংলা স্টার নিউজ`,
+        description: news.summary,
+    };
+}
+
+export default async function NewsDetailPage({ params }) {
+    const { slug } =  params;
+    console.log("slug from details page",slug)
+    const news = await getNewsBySlug(slug);
+    const breakingNews = await getBreakingNews();
+    const allNews = await getNews();
+    const latestNews = allNews.filter(n => n.slug !== slug).slice(0, 5);
+
+    if (!news) {
+        notFound();
+    }
+
+    // Get current URL for sharing
+    const fullUrl = `https://banglastar.com/news/${slug}`;
+
+    return (
+        <div className="flex flex-col min-h-screen bg-gray-50">
+            <Header />
+            <BreakingNews news={breakingNews} />
+
+            <main className="py-8 md:py-12">
+                <Container className="grid grid-cols-1 lg:grid-cols-12 gap-12">
+                    {/* Main Content */}
+                    <article className="lg:col-span-8 bg-white p-6 md:p-8 shadow-sm">
+                        <div className="space-y-6">
+                            {/* Category and Date */}
+                            <div className="flex items-center gap-4 text-sm">
+                                <span className="bg-primary text-white px-3 py-1 font-bold">{news.category}</span>
+                                <span className="text-gray-500 font-medium">{news.date} | {news.time}</span>
+                            </div>
+
+                            {/* Title */}
+                            <h1 className="text-3xl md:text-5xl font-extrabold text-gray-900 leading-[1.2] md:leading-[1.1]">
+                                {news.title}
+                            </h1>
+
+                            {/* Author and Toolbar */}
+                            <div className="flex flex-wrap items-center justify-between gap-4 py-4 border-y border-gray-100">
+                                <div className="flex items-center gap-3">
+                                    <div className="w-10 h-10 bg-red-50 flex items-center justify-center text-primary font-bold text-lg">
+                                        {news.author.charAt(0)}
+                                    </div>
+                                    <div>
+                                        <p className="text-sm font-bold text-gray-800">{news.author}</p>
+                                        <p className="text-xs text-gray-500">বিশেষ সংবাদদাতা</p>
+                                    </div>
+                                </div>
+                                <div className="flex items-center gap-3">
+                                    <PrintButton />
+                                </div>
+                            </div>
+
+                            {/* Main Image */}
+                            <div className="relative h-[300px] md:h-[500px] w-full overflow-hidden shadow-inner">
+                                <Image
+                                    src={news.image}
+                                    alt={news.title}
+                                    fill
+                                    priority
+                                    className="object-cover"
+                                />
+                            </div>
+
+                            {/* Content */}
+                            <div className="prose prose-lg max-w-none text-gray-800 leading-[1.8] font-medium space-y-6">
+                                {/* Split content by newlines and wrap in paragraphs */}
+                                {news?.content?.split('\n').map((para, i) => (
+                                    <p key={i} className="mb-4">{para}</p>
+                                ))}
+
+                                {/* Mock additional content for visual length */}
+                                <p>এ বিষয়ে আরও বিস্তারিত জানতে আমাদের সাথেই থাকুন। দেশ ও বিদেশের সর্বশেষ সব খবর সবার আগে পেতে বাংলা স্টার নিউজ-এর সোশ্যাল মিডিয়া পেজগুলোতে লাইক দিয়ে যুক্ত হন।</p>
+                                <p>বাংলাদেশের অগ্রযাত্রায় আমরা আপনার গর্বিত অংশীদার। সারা দেশের মানুষের প্রাণের কথাগুলো সংবাদ আকারে সবার কাছে তুলে আনাই আমাদের মূল লক্ষ্য। কোনো সংবাদ সম্পর্কে আপনার কোনো অভিযোগ বা পরামর্শ থাকলে আমাদের জানাতে ভুলবেন না।</p>
+                            </div>
+
+                            {/* Share and Tags */}
+                            <div className="pt-12 border-t border-gray-100">
+                                <ShareButtons title={news.title} url={fullUrl} />
+                            </div>
+
+                            {/* Comments Section */}
+                            <FBComments url={fullUrl} />
+                        </div>
+                    </article>
+
+                    {/* Sidebar */}
+                    <aside className="lg:col-span-4 space-y-8">
+                        {/* Latest News */}
+                        <div className="bg-white p-6 shadow-sm border border-gray-100">
+                            <h2 className="text-xl font-bold mb-6 border-b-2 border-primary pb-2 flex items-center gap-2">
+                                <span className="w-2 h-6 bg-primary inline-block"></span>
+                                আরো সংবাদ
+                            </h2>
+                            <div className="space-y-4">
+                                {latestNews.map(item => (
+                                    <HorizontalCard key={item.id} news={item} />
+                                ))}
+                            </div>
+                            <button className="w-full mt-6 py-2 text-primary font-bold text-sm bg-red-50 hover:bg-red-100 transition-colors">
+                                সব খবর পড়ুন
+                            </button>
+                        </div>
+
+                        {/* Ad Placeholder */}
+                        <div className="bg-gray-100 h-64 flex items-center justify-center border-2 border-dashed border-gray-300">
+                            <span className="text-gray-400 font-bold uppercase tracking-widest text-xs">বিজ্ঞাপন / Advertisement</span>
+                        </div>
+                    </aside>
+                </Container>
+            </main>
+
+            <Footer />
+        </div>
+    );
+}

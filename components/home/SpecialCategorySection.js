@@ -1,0 +1,78 @@
+
+import Link from 'next/link';
+import Image from 'next/image';
+import Container from '../common/Container';
+
+const SpecialCategorySection = ({ title, mainNews, sideNews = [] }) => {
+    if (!mainNews) return null;
+
+    return (
+        <Container >
+            <div className=" bg-white p-6 border border-gray-300 ">
+                {/* Section Header */}
+                <div className="flex items-center justify-between border-b border-gray-200 pb-3 mb-6">
+                    <div className="flex items-center gap-3">
+                        <div className="w-1.5 h-8 bg-primary"></div>
+                        <h2 className="text-2xl font-black text-gray-900">{title}</h2>
+                    </div>
+                    <Link href="#" className="text-primary font-bold text-sm flex items-center gap-1 hover:underline">
+                        আরও খবর
+                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7"></path></svg>
+                    </Link>
+                </div>
+
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
+                    {/* Left: Featured News Item */}
+                    <div className="lg:col-span-4 flex flex-col group">
+                        <Link href={`/news/${mainNews.slug}`} className="block relative h-64 w-full overflow-hidden">
+                            <Image
+                                src={mainNews.image}
+                                alt={mainNews.title}
+                                fill
+                                className="object-cover transition-transform duration-700 group-hover:scale-105"
+                            />
+                        </Link>
+                        <div className="mt-4 space-y-3">
+                            <Link href={`/news/${mainNews.slug}`}>
+                                <h3 className="text-xl font-black text-gray-900 leading-tight group-hover:text-primary transition-colors">
+                                    {mainNews.title}
+                                </h3>
+                            </Link>
+                            <p className="text-gray-600 text-sm leading-relaxed line-clamp-3">
+                                {mainNews.summary}
+                            </p>
+                        </div>
+                    </div>
+
+                    {/* Right: Small News Items in 2 Columns */}
+                    <div className="lg:col-span-8">
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
+                            {sideNews.slice(0, 6).map((item, index) => (
+                                <Link key={item.id} href={`/news/${item.slug}`} className="flex gap-4 p-4 border border-gray-200 mb-0 hover:bg-gray-50 transition-colors group h-fit">
+                                    <div className="flex-1 space-y-2">
+                                        <h4 className="text-sm font-bold text-gray-900 leading-snug group-hover:text-primary transition-colors line-clamp-2">
+                                            {item.title}
+                                        </h4>
+                                        <p className="text-xs text-gray-500 line-clamp-2 leading-relaxed">
+                                            {item.summary}
+                                        </p>
+                                    </div>
+                                    <div className="relative w-20 h-16 flex-shrink-0 overflow-hidden">
+                                        <Image
+                                            src={item.image}
+                                            alt={item.title}
+                                            fill
+                                            className="object-cover"
+                                        />
+                                    </div>
+                                </Link>
+                            ))}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </Container>
+    );
+};
+
+export default SpecialCategorySection;
