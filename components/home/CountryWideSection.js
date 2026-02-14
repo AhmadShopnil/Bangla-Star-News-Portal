@@ -34,7 +34,7 @@ const CountryWideSection = ({ title, featureNews, gridNews = [] }) => {
                             />
                         </Link>
                     </div>
-                    <div className="md:col-span-6 flex flex-col justify-center">
+                    <div className="md:col-span-6 flex flex-col justify-start">
                         <Link href={`/news/${featureNews.slug}`} className="group">
                             <h3 className="text-2xl md:text-3xl font-black text-gray-900 leading-tight group-hover:text-primary transition-colors mb-4">
                                 {featureNews.title}

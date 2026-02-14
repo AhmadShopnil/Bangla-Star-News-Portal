@@ -9,7 +9,7 @@ const TrendingSection = ({ news = [] }) => {
 
     return (
         <Container >
-        <div className="  p-8 border border-gray-300 shadow-sm ">
+        <div className="  p-8 border border-gray-300 shadow-xs ">
                 <div className="flex items-center justify-between mb-8 border-b border-gray-100 pb-4">
                 <h2 className="text-2xl font-black flex items-center gap-3">
                     <span className="w-2 h-8 bg-black"></span>

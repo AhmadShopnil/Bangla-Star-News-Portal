@@ -63,13 +63,7 @@ export default async function Home() {
           sideNews={sportsSide}
         />
 
-        {/* Ad Space Placeholder */}
-        <Container >
-          <div className=" h-32 bg-gray-100 border-2 border-dashed border-gray-300 flex items-center justify-center font-bold text-gray-400">
-            ADVERTISEMENT
-          </div>
-
-        </Container>
+    
 
    
 
@@ -81,8 +75,14 @@ export default async function Home() {
           </div>
         </Container>
 
-        {/* Trending / Popular Horizontal Carousel Style */}
-      
+       
+          {/* Ad Space  */}
+        <Container >
+          <div className=" h-32 bg-gray-100 border-2 border-dashed border-gray-300 flex items-center justify-center font-bold text-gray-400">
+            ADVERTISEMENT
+          </div>
+
+        </Container>
 
         <Container className="">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
