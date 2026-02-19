@@ -31,7 +31,7 @@ export default async function Home() {
 
   // Politics News (Title: রাজনীতি)
   const politicsMain = allNews[1];
-  const politicsSide = allNews.slice(2, 8);
+  const politicsSide = allNews.slice(0, 8);
 
   return (
     <div className="flex flex-col min-h-screen bg-[#F8F9FA]">
@@ -42,8 +42,8 @@ export default async function Home() {
       <main className="flex-grow pb-12 space-y-4">
         {/* Dynamic Hero Row matching reference */}
         <HeroRow mainNews={mainNews} bottomNews={heroGridNews} />
-  <TrendingSection news={trendingNews} />
-           {/* Politics Section */}
+        <TrendingSection news={trendingNews} />
+        {/* Politics Section */}
         <SpecialCategorySection
           title="রাজনীতি"
           mainNews={politicsMain}
@@ -63,9 +63,7 @@ export default async function Home() {
           sideNews={sportsSide}
         />
 
-    
 
-   
 
         {/* Categories Section */}
         <Container className="">
@@ -75,8 +73,8 @@ export default async function Home() {
           </div>
         </Container>
 
-       
-          {/* Ad Space  */}
+
+        {/* Ad Space  */}
         <Container >
           <div className=" h-32 bg-gray-100 border-2 border-dashed border-gray-300 flex items-center justify-center font-bold text-gray-400">
             ADVERTISEMENT

@@ -23,7 +23,7 @@ const HorizontalCard = ({ news }) => {
                 </Link>
                 <div className="flex items-center gap-2 text-[10px] text-gray-500 mt-1">
                     <span className="text-primary font-bold">{news.category}</span>
-                    <span>{news.time}</span>
+                    {/* <span>{news.time}</span> */}
                 </div>
             </div>
         </div>

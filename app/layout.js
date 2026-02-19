@@ -1,10 +1,11 @@
-import { Hind_Siliguri } from "next/font/google";
+import { Anek_Bangla } from "next/font/google";
 import "./globals.css";
 
-const hindSiliguri = Hind_Siliguri({
-  weight: ['300', '400', '500', '600', '700'],
-  subsets: ["bengali"],
-  variable: "--font-hind-siliguri",
+const anekBangla = Anek_Bangla({
+  weight: ['300', '400', '500', '600', '700', '800'],
+  subsets: ["bengali", "latin"],
+  variable: "--font-anek-bangla",
+  display: 'swap',
 });
 
 export const metadata = {
@@ -14,8 +15,8 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="bn">
-      <body className={`${hindSiliguri.variable} font-sans antialiased bg-gray-50`}>
+    <html lang="bn" className={`${anekBangla.variable} font-sans`}>
+      <body className="antialiased bg-gray-50">
         {children}
       </body>
     </html>

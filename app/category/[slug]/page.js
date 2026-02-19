@@ -2,20 +2,22 @@
 import Header from '@/components/common/Header';
 import Footer from '@/components/common/Footer';
 import BreakingNews from '@/components/home/BreakingNews';
-import MediumCard from '@/components/news/MediumCard';
 import { getNews, getBreakingNews, getCategories } from '@/lib/api';
 import Container from '@/components/common/Container';
+import Link from 'next/link';
+import Image from 'next/image';
 
 export async function generateMetadata({ params }) {
+    const { slug } = await params;
     const categories = await getCategories();
-    const category = categories.find(c => c.slug === params.slug);
+    const category = categories.find(c => c.slug === slug);
     return {
         title: `${category ? category.name : 'বিভাগ'} | বাংলা স্টার নিউজ`,
     };
 }
 
 export default async function CategoryPage({ params }) {
-    const { slug } = params;
+    const { slug } = await params;
     const categories = await getCategories();
     const category = categories.find(c => c.slug === slug);
     const breakingNews = await getBreakingNews();
@@ -24,7 +26,6 @@ export default async function CategoryPage({ params }) {
     // Filter news by category name (mock)
     const categoryNews = allNews.filter(n =>
         n.category.toLowerCase() === (category ? category.name.toLowerCase() : '') ||
-        // Simple mapping for this mock
         (slug === 'national' && n.category === 'জাতীয়') ||
         (slug === 'politics' && n.category === 'রাজনীতি') ||
         (slug === 'international' && n.category === 'আন্তর্জাতিক') ||
@@ -35,32 +36,135 @@ export default async function CategoryPage({ params }) {
         (slug === 'economics' && n.category === 'অর্থনীতি')
     );
 
+    const featuredNews = categoryNews[0];
+    const otherNews = categoryNews.slice(1);
+    const latestNews = allNews.slice(0, 5); // Just some latest news for sidebar
+
+    const subCategories = [
+        "করোনাভাইরাস", "রাজধানীর খবর", "জাতীয় সংসদ", "চট্টগ্রামের খবর", "ওসমান হাদি",
+        "প্রধান উপদেষ্টা", "ভারতীয় হাইকমিসন", "প্রথম আলো", "ডেইলি স্টার"
+    ];
+
     return (
-        <div className="flex flex-col min-h-screen">
+        <div className="flex flex-col min-h-screen bg-white">
             <Header />
             <BreakingNews news={breakingNews} />
 
-            <main className="py-12">
+            <main className="py-6">
                 <Container>
-                    <div className="mb-10 flex items-center gap-4">
-                        <div className="w-2 h-10 bg-primary"></div>
-                        <h1 className="text-4xl font-extrabold text-gray-900">
-                            {category ? category.name : 'বিভাগ'}
-                        </h1>
-                    </div>
+                    <div className="flex flex-col lg:flex-row gap-8">
 
-                    {categoryNews.length > 0 ? (
-                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                            {categoryNews.map((news) => (
-                                <MediumCard key={news.id} news={news} />
-                            ))}
+                        <div className="lg:w-3/4">
+                            {/* Category Title */}
+                            <div className="mb-4">
+                                <div className="flex items-center gap-4  mb-4">
+                                    <h1 className="text-3xl font-bold text-[#003366]">
+                                        {category ? category.name : 'বিভাগ'}
+                                    </h1>
+                                    <div className="flex-1 border-t border-gray-300 mt-2"></div>
+                                </div>
+
+                                {/* Sub-categories Bar */}
+                                <div className="flex gap-2 overflow-x-auto pb-2 no-scrollbar">
+                                    {subCategories.map((sub, i) => (
+                                        <button key={i} className="whitespace-nowrap px-3 py-1 bg-gray-100 hover:bg-gray-200 text-sm font-medium border border-gray-300 transition-colors">
+                                            {sub}
+                                        </button>
+                                    ))}
+                                </div>
+                            </div>
+
+                            <div className="flex flex-col lg:flex-row gap-8">
+                                {/* Main Content */}
+                                <div >
+                                    {featuredNews && (
+                                        <div className="mb-8 border-b border-gray-300 pb-8">
+                                            <Link href={`/news/${featuredNews.slug}`} className="flex flex-col md:flex-row gap-6">
+                                                <div className="md:w-1/2">
+                                                    <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 leading-tight hover:text-red-600 transition-colors mb-4">
+                                                        {featuredNews.title}
+                                                    </h2>
+                                                    <p className="text-gray-600 text-lg line-clamp-3">
+                                                        {featuredNews.summary}
+                                                    </p>
+                                                </div>
+                                                <div className="md:w-1/2 relative h-[250px] md:h-auto min-h-[300px]">
+                                                    <Image
+                                                        src={featuredNews.image}
+                                                        alt={featuredNews.title}
+                                                        fill
+                                                        className="object-cover"
+                                                    />
+                                                </div>
+                                            </Link>
+                                        </div>
+                                    )}
+
+                                    {/* News Grid */}
+                                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-8">
+                                        {otherNews.map((news) => (
+                                            <Link key={news.id} href={`/news/${news.slug}`} className="flex gap-3 group border border-gray-300 p-2 hover:bg-gray-50 transition-colors">
+                                                <div className="flex-1">
+                                                    <h3 className="text-md font-bold text-gray-900 leading-snug group-hover:text-red-600 transition-colors line-clamp-3">
+                                                        {news.title}
+                                                    </h3>
+                                                    <p className="text-xs text-gray-500 mt-2 line-clamp-2">
+                                                        {news.summary}
+                                                    </p>
+                                                </div>
+                                                <div className="relative w-20 h-20 flex-shrink-0">
+                                                    <Image
+                                                        src={news.image}
+                                                        alt={news.title}
+                                                        fill
+                                                        className="object-cover"
+                                                    />
+                                                </div>
+                                            </Link>
+                                        ))}
+                                    </div>
+
+                                    {/* Show More Button */}
+                                    <div className="mt-12 flex justify-center">
+                                        <button className="bg-red-700 text-white px-8 py-2 rounded font-bold hover:bg-red-800 transition-colors">
+                                            আরও দেখুন
+                                        </button>
+                                    </div>
+                                </div>
+
+
+                            </div>
                         </div>
-                    ) : (
-                        <div className="bg-white p-12 text-center shadow-sm">
-                            <h2 className="text-xl font-bold text-gray-800">বর্তমানে এই বিভাগে কোনো সংবাদ নেই।</h2>
-                            <p className="text-gray-500 mt-2">অন্যান্য বিভাগগুলো দেখুন।</p>
+                        <div className="lg:w-1/4">
+                            <div className="sticky">
+                                <h2 className="text-xl font-bold text-red-600 border-b-2 border-red-600 pb-1 mb-4">
+                                    সর্বশেষ
+                                </h2>
+                                <div className="flex flex-col gap-4">
+                                    {latestNews.map((news) => (
+                                        <Link key={news.id} href={`/news/${news.slug}`} className="flex gap-3 group border-b pb-4 last:border-0">
+                                            <div className="flex-1">
+                                                <h4 className="text-sm font-bold text-gray-900 leading-tight group-hover:text-red-600 transition-colors line-clamp-2">
+                                                    {news.title}
+                                                </h4>
+                                                <p className="text-[10px] text-gray-500 mt-1 line-clamp-2">
+                                                    {news.summary}
+                                                </p>
+                                            </div>
+                                            <div className="relative w-16 h-12 flex-shrink-0">
+                                                <Image
+                                                    src={news.image}
+                                                    alt={news.title}
+                                                    fill
+                                                    className="object-cover"
+                                                />
+                                            </div>
+                                        </Link>
+                                    ))}
+                                </div>
+                            </div>
                         </div>
-                    )}
+                    </div>
                 </Container>
             </main>
 

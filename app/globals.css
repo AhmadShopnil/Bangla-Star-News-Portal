@@ -4,11 +4,19 @@
   --color-primary: #EE1D23;
   /* Standard news red */
   --color-secondary: #212121;
-  --font-bengali: 'Hind Siliguri', sans-serif;
+  --font-sans: var(--font-anek-bangla), ui-sans-serif, system-ui, sans-serif;
+  --font-bengali: var(--font-anek-bangla), sans-serif;
 }
 
 /* Custom styles for news theme */
 @layer base {
+
+  *,
+  html,
+  body {
+    font-family: var(--font-anek-bangla), "Anek Bangla", ui-sans-serif, system-ui, sans-serif !important;
+  }
+
   body {
     @apply bg-gray-50 text-gray-900;
   }
@@ -48,6 +56,17 @@
   animation: ticker 20s linear infinite;
 }
 
+
 .animate-ticker:hover {
   animation-play-state: paused;
+}
+
+@layer utilities {
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
 }

@@ -2,6 +2,8 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import Container from '../common/Container';
+import LocationSearch from './LocationSearch';
+
 const HeroRow = ({ mainNews, bottomNews = [] }) => {
     if (!mainNews) return null;
 
@@ -12,24 +14,24 @@ const HeroRow = ({ mainNews, bottomNews = [] }) => {
             </div>
             {/* Top Featured Story */}
             <div className=" px-6 py-2 border-r-2 border-l-4 border-l-blue-800 border-gray-300 w-full">
-                <div className="grid grid-cols-1 md:grid-cols-12 gap-8">
+                <div className="grid grid-cols-1 md:grid-cols-12 gap-4">
                     {/* Text Side */}
-                    <div className="md:col-span-6 flex flex-col justify-between">
-                     <div>
-                           <Link href={`/news/${mainNews.slug}`} className="group">
-                            <h1 className="text-2xl md:text-3xl lg:text-4xl font-extrabold text-gray-800 leading-[1.15]
+                    <div className="md:col-span-4 lg:col-span-5 flex flex-col justify-between ">
+                        <div className=''>
+                            <Link href={`/news/${mainNews.slug}`} className="group">
+                                <h1 className="text-2xl md:text-3xl lg:text-3xl font-extrabold text-gray-800 leading-[1.15]
                              group-hover:text-primary transition-colors">
-                                {mainNews.title}
-                            </h1>
-                        </Link>
-                        <p className="text-gray-600 text-lg leading-relaxed mt-2 md:mt-3 ">
-                            {mainNews.summary}
-                        </p>
-                        {/* <div className="flex items-center gap-4 text-sm text-gray-500 font-bold uppercase">
+                                    {mainNews.title}
+                                </h1>
+                            </Link>
+                            <p className="text-gray-600 text-lg leading-relaxed mt-2 md:mt-3 ">
+                                {mainNews.summary}
+                            </p>
+                            {/* <div className="flex items-center gap-4 text-sm text-gray-500 font-bold uppercase">
                             <span className="text-primary">{mainNews.category}</span>
                             <span>{mainNews.time}</span>
                         </div> */}
-                     </div>
+                        </div>
                         <div className="flex gap-2 pt-4">
                             <div className="px-3 py-1 bg-gray-100 text-xs font-bold text-gray-600">জাতীয়</div>
                             <div className="px-3 py-1 bg-gray-100 text-xs font-bold text-gray-600">রাজনীতি</div>
@@ -37,7 +39,7 @@ const HeroRow = ({ mainNews, bottomNews = [] }) => {
                     </div>
 
                     {/* Image Side */}
-                    <div className="md:col-span-6">
+                    <div className="md:col-span-6 lg:col-span-5">
                         <Link href={`/news/${mainNews.slug}`} className="block relative h-[250px] md:h-[300px] w-full overflow-hidden">
                             <Image
                                 src={mainNews.image}
@@ -47,6 +49,11 @@ const HeroRow = ({ mainNews, bottomNews = [] }) => {
                                 className="object-cover transition-transform duration-700 hover:scale-105"
                             />
                         </Link>
+                    </div>
+
+                    {/* Search Side */}
+                    <div className="md:col-span-2">
+                        <LocationSearch />
                     </div>
                 </div>
             </div>

@@ -23,8 +23,8 @@ export async function generateMetadata({ params }) {
 }
 
 export default async function NewsDetailPage({ params }) {
-    const { slug } =  params;
-    console.log("slug from details page",slug)
+    const { slug } = await params;
+    console.log("slug from details page", slug)
     const news = await getNewsBySlug(slug);
     const breakingNews = await getBreakingNews();
     const allNews = await getNews();
@@ -43,9 +43,9 @@ export default async function NewsDetailPage({ params }) {
             <BreakingNews news={breakingNews} />
 
             <main className="py-8 md:py-12">
-                <Container className="grid grid-cols-1 lg:grid-cols-12 gap-12">
+                <Container className="grid grid-cols-1 lg:grid-cols-12 gap-4">
                     {/* Main Content */}
-                    <article className="lg:col-span-8 bg-white p-6 md:p-8 shadow-sm">
+                    <article className="lg:col-span-8 p-3 md:p-6 border border-gray-200 ">
                         <div className="space-y-6">
                             {/* Category and Date */}
                             <div className="flex items-center gap-4 text-sm">
@@ -54,16 +54,16 @@ export default async function NewsDetailPage({ params }) {
                             </div>
 
                             {/* Title */}
-                            <h1 className="text-3xl md:text-5xl font-extrabold text-gray-900 leading-[1.2] md:leading-[1.1]">
+                            <h1 className="text-3xl md:text-4xl font-semibold text-gray-900 leading-[1] md:leading-6">
                                 {news.title}
                             </h1>
 
                             {/* Author and Toolbar */}
                             <div className="flex flex-wrap items-center justify-between gap-4 py-4 border-y border-gray-100">
                                 <div className="flex items-center gap-3">
-                                    <div className="w-10 h-10 bg-red-50 flex items-center justify-center text-primary font-bold text-lg">
+                                    {/* <div className="w-10 h-10 bg-red-50 flex items-center justify-center text-primary font-bold text-lg">
                                         {news.author.charAt(0)}
-                                    </div>
+                                    </div> */}
                                     <div>
                                         <p className="text-sm font-bold text-gray-800">{news.author}</p>
                                         <p className="text-xs text-gray-500">বিশেষ সংবাদদাতা</p>
@@ -110,7 +110,7 @@ export default async function NewsDetailPage({ params }) {
                     {/* Sidebar */}
                     <aside className="lg:col-span-4 space-y-8">
                         {/* Latest News */}
-                        <div className="bg-white p-6 shadow-sm border border-gray-100">
+                        <div className="p-3 md:p-6  border border-gray-200">
                             <h2 className="text-xl font-bold mb-6 border-b-2 border-primary pb-2 flex items-center gap-2">
                                 <span className="w-2 h-6 bg-primary inline-block"></span>
                                 আরো সংবাদ
