@@ -1,5 +1,5 @@
 
-import Header from '@/components/common/Header';
+import Header from '@/components/common/Header/Header';
 import Footer from '@/components/common/Footer';
 import BreakingNews from '@/components/home/BreakingNews';
 import MediumCard from '@/components/news/MediumCard';

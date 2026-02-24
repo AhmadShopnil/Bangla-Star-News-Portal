@@ -1,5 +1,5 @@
 
-import Header from '@/components/common/Header';
+import Header from '@/components/common/Header/Header';
 import Footer from '@/components/common/Footer';
 import BreakingNews from '@/components/home/BreakingNews';
 import { getNews, getBreakingNews, getCategories } from '@/lib/api';
@@ -52,7 +52,7 @@ export default async function CategoryPage({ params }) {
 
             <main className="py-6">
                 <Container>
-                    <div className="flex flex-col lg:flex-row gap-8">
+                    <div className="flex flex-col lg:flex-row gap-2 md:gap-6">
 
                         <div className="lg:w-3/4">
                             {/* Category Title */}
@@ -74,17 +74,17 @@ export default async function CategoryPage({ params }) {
                                 </div>
                             </div>
 
-                            <div className="flex flex-col lg:flex-row gap-8">
+                            <div className="flex flex-col lg:flex-row gap-4">
                                 {/* Main Content */}
                                 <div >
                                     {featuredNews && (
-                                        <div className="mb-8 border-b border-gray-300 pb-8">
-                                            <Link href={`/news/${featuredNews.slug}`} className="flex flex-col md:flex-row gap-6">
+                                        <div className="mb-2 md:mb-4 border-b border-gray-300 pb-2 md:pb-4">
+                                            <Link href={`/news/${featuredNews.slug}`} className="flex flex-col md:flex-row gap-4">
                                                 <div className="md:w-1/2">
                                                     <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 leading-tight hover:text-red-600 transition-colors mb-4">
                                                         {featuredNews.title}
                                                     </h2>
-                                                    <p className="text-gray-600 text-lg line-clamp-3">
+                                                    <p className="text-gray-600 text-base md:text-xl line-clamp-3">
                                                         {featuredNews.summary}
                                                     </p>
                                                 </div>
@@ -101,14 +101,15 @@ export default async function CategoryPage({ params }) {
                                     )}
 
                                     {/* News Grid */}
-                                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-8">
+                                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 md:gap-4">
                                         {otherNews.map((news) => (
                                             <Link key={news.id} href={`/news/${news.slug}`} className="flex gap-3 group border border-gray-300 p-2 hover:bg-gray-50 transition-colors">
                                                 <div className="flex-1">
-                                                    <h3 className="text-md font-bold text-gray-900 leading-snug group-hover:text-red-600 transition-colors line-clamp-3">
+                                                    <h3 className="text-base md:text-xl font-bold text-gray-800 leading-snug group-hover:text-red-600 
+                                                    transition-colors line-clamp-1">
                                                         {news.title}
                                                     </h3>
-                                                    <p className="text-xs text-gray-500 mt-2 line-clamp-2">
+                                                    <p className="text-base md:text-xl text-gray-500 mt-2 line-clamp-2">
                                                         {news.summary}
                                                     </p>
                                                 </div>
@@ -125,8 +126,8 @@ export default async function CategoryPage({ params }) {
                                     </div>
 
                                     {/* Show More Button */}
-                                    <div className="mt-12 flex justify-center">
-                                        <button className="bg-red-700 text-white px-8 py-2 rounded font-bold hover:bg-red-800 transition-colors">
+                                    <div className="mt-4 md:mt-6 flex justify-center">
+                                        <button className="bg-red-700 text-base md:text-xl text-white px-4 py-1 md:px-8 md:py-2 rounded font-bold hover:bg-red-800 transition-colors">
                                             আরও দেখুন
                                         </button>
                                     </div>
@@ -140,18 +141,19 @@ export default async function CategoryPage({ params }) {
                                 <h2 className="text-xl font-bold text-red-600 border-b-2 border-red-600 pb-1 mb-4">
                                     সর্বশেষ
                                 </h2>
-                                <div className="flex flex-col gap-4">
+                                <div className="flex flex-col gap-2 md:gap-4">
                                     {latestNews.map((news) => (
                                         <Link key={news.id} href={`/news/${news.slug}`} className="flex gap-3 group border-b pb-4 last:border-0">
                                             <div className="flex-1">
-                                                <h4 className="text-sm font-bold text-gray-900 leading-tight group-hover:text-red-600 transition-colors line-clamp-2">
+                                                <h4 className="text-base md:text-xl font-bold text-gray-800 leading-tight group-hover:text-red-600
+                                                 transition-colors line-clamp-2">
                                                     {news.title}
                                                 </h4>
-                                                <p className="text-[10px] text-gray-500 mt-1 line-clamp-2">
+                                                <p className="text-base md:text-xl] text-gray-500 mt-1 line-clamp-2">
                                                     {news.summary}
                                                 </p>
                                             </div>
-                                            <div className="relative w-16 h-12 flex-shrink-0">
+                                            <div className="relative w-20 h-20 flex-shrink-0">
                                                 <Image
                                                     src={news.image}
                                                     alt={news.title}

@@ -32,7 +32,7 @@ const Navbar = () => {
                         <li key={item.id} className="relative group">
                             <Link
                                 href={item.slug}
-                                className={`px-3 py-4 block text-[13px] font-black tracking-wide transition-colors duration-200 flex items-center gap-1 ${pathname === item.slug
+                                className={`px-3 py-4 block text-[13px] sm:text-sm md:text-lg font-semibold tracking-wide transition-colors duration-200 flex items-center gap-1 ${pathname === item.slug
                                     ? 'text-white underline decoration-2 underline-offset-8'
                                     : 'text-white/90 hover:text-white'
                                     }`}

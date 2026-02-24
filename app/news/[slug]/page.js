@@ -1,5 +1,5 @@
 
-import Header from '@/components/common/Header';
+import Header from '@/components/common/Header/Header';
 import Footer from '@/components/common/Footer';
 import BreakingNews from '@/components/home/BreakingNews';
 import ShareButtons from '@/components/news/ShareButtons';
@@ -10,9 +10,10 @@ import { getNewsBySlug, getBreakingNews, getNews } from '@/lib/api';
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import Container from '@/components/common/Container';
+import CopyButton from '@/components/news/CopyButton';
 
 export async function generateMetadata({ params }) {
-    const { slug } = params;
+    const { slug } = await params;
     const news = await getNewsBySlug(slug);
     if (!news) return { title: 'Not Found' };
 
@@ -24,7 +25,7 @@ export async function generateMetadata({ params }) {
 
 export default async function NewsDetailPage({ params }) {
     const { slug } = await params;
-    console.log("slug from details page", slug)
+    // console.log("slug from details page", slug)
     const news = await getNewsBySlug(slug);
     const breakingNews = await getBreakingNews();
     const allNews = await getNews();
@@ -35,7 +36,8 @@ export default async function NewsDetailPage({ params }) {
     }
 
     // Get current URL for sharing
-    const fullUrl = `https://banglastar.com/news/${slug}`;
+    // const fullUrl = `https://banglastar.com/news/${slug}`;
+    const fullUrl = `/news/${slug}`;
 
     return (
         <div className="flex flex-col min-h-screen bg-gray-50">
@@ -48,7 +50,7 @@ export default async function NewsDetailPage({ params }) {
                     <article className="lg:col-span-8 p-3 md:p-6 border border-gray-200 ">
                         <div className="space-y-6">
                             {/* Category and Date */}
-                            <div className="flex items-center gap-4 text-sm">
+                            <div className="flex items-center gap-4 text-base md:text-xl">
                                 <span className="bg-primary text-white px-3 py-1 font-bold">{news.category}</span>
                                 <span className="text-gray-500 font-medium">{news.date} | {news.time}</span>
                             </div>
@@ -59,18 +61,20 @@ export default async function NewsDetailPage({ params }) {
                             </h1>
 
                             {/* Author and Toolbar */}
-                            <div className="flex flex-wrap items-center justify-between gap-4 py-4 border-y border-gray-100">
+                            <div className="flex flex-wrap items-center justify-between gap-4  border-y border-gray-100">
                                 <div className="flex items-center gap-3">
                                     {/* <div className="w-10 h-10 bg-red-50 flex items-center justify-center text-primary font-bold text-lg">
                                         {news.author.charAt(0)}
                                     </div> */}
                                     <div>
-                                        <p className="text-sm font-bold text-gray-800">{news.author}</p>
-                                        <p className="text-xs text-gray-500">বিশেষ সংবাদদাতা</p>
+                                        <p className="text-base md:text-xl font-bold text-gray-800">{news.author}</p>
+                                        <p className="text-base md:text-xl text-gray-500">বিশেষ সংবাদদাতা</p>
                                     </div>
                                 </div>
                                 <div className="flex items-center gap-3">
+                                    <ShareButtons title={news.title} url={fullUrl} /> 
                                     <PrintButton />
+                                     {/* <CopyButton url={fullUrl} /> */}
                                 </div>
                             </div>
 
@@ -86,7 +90,7 @@ export default async function NewsDetailPage({ params }) {
                             </div>
 
                             {/* Content */}
-                            <div className="prose prose-lg max-w-none text-gray-800 leading-[1.8] font-medium space-y-6">
+                            <div className="prose prose-lg max-w-none text-base md:text-xl text-gray-800 leading-[1.8] font-medium space-y-6">
                                 {/* Split content by newlines and wrap in paragraphs */}
                                 {news?.content?.split('\n').map((para, i) => (
                                     <p key={i} className="mb-4">{para}</p>
@@ -98,9 +102,9 @@ export default async function NewsDetailPage({ params }) {
                             </div>
 
                             {/* Share and Tags */}
-                            <div className="pt-12 border-t border-gray-100">
+                            {/* <div className="pt-12 border-t border-gray-100">
                                 <ShareButtons title={news.title} url={fullUrl} />
-                            </div>
+                            </div> */}
 
                             {/* Comments Section */}
                             <FBComments url={fullUrl} />
@@ -108,7 +112,7 @@ export default async function NewsDetailPage({ params }) {
                     </article>
 
                     {/* Sidebar */}
-                    <aside className="lg:col-span-4 space-y-8">
+                    <aside className="lg:col-span-4 space-y-6">
                         {/* Latest News */}
                         <div className="p-3 md:p-6  border border-gray-200">
                             <h2 className="text-xl font-bold mb-6 border-b-2 border-primary pb-2 flex items-center gap-2">

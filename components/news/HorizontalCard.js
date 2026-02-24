@@ -17,11 +17,12 @@ const HorizontalCard = ({ news }) => {
             </Link>
             <div className="flex-1 min-w-0">
                 <Link href={`/news/${news.slug}`}>
-                    <h4 className="text-sm md:text-md font-bold leading-snug group-hover:text-primary transition-colors line-clamp-2">
+                    <h4 className="text-base md:text-xl font-bold text-gray-700 leading-snug group-hover:text-primary 
+                    transition-colors line-clamp-2">
                         {news.title}
                     </h4>
                 </Link>
-                <div className="flex items-center gap-2 text-[10px] text-gray-500 mt-1">
+                <div className="flex items-center gap-2 text-base md:text-xl text-gray-500 mt-1">
                     <span className="text-primary font-bold">{news.category}</span>
                     {/* <span>{news.time}</span> */}
                 </div>

@@ -1,12 +1,6 @@
-@import "tailwindcss";
-
-@theme {
-  --color-primary: #EE1D23;
-  /* Standard news red */
-  --color-secondary: #212121;
-  --font-sans: var(--font-anek-bangla), ui-sans-serif, system-ui, sans-serif;
-  --font-bengali: var(--font-anek-bangla), sans-serif;
-}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 /* Custom styles for news theme */
 @layer base {
@@ -14,7 +8,7 @@
   *,
   html,
   body {
-    font-family: var(--font-anek-bangla), "Anek Bangla", ui-sans-serif, system-ui, sans-serif !important;
+    font-family: var(--font-solaiman-lipi), "SolaimanLipi", ui-sans-serif, system-ui, sans-serif !important;
   }
 
   body {
@@ -28,12 +22,12 @@
   }
 
   .news-card-hover {
-    transition: all 500ms;
+    @apply transition-all duration-500;
   }
 
   .news-card-hover:hover {
+    @apply shadow-lg -translate-y-1;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-    transform: translateY(-4px);
   }
 
   .section-title {
@@ -65,6 +59,7 @@
   .no-scrollbar::-webkit-scrollbar {
     display: none;
   }
+
   .no-scrollbar {
     -ms-overflow-style: none;
     scrollbar-width: none;

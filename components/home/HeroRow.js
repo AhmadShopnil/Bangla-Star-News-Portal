@@ -13,7 +13,7 @@ const HeroRow = ({ mainNews, bottomNews = [] }) => {
 
             </div>
             {/* Top Featured Story */}
-            <div className=" px-6 py-2 border-r-2 border-l-4 border-l-blue-800 border-gray-300 w-full">
+            <div className="px-2 md:px-4 lg:px-6 py-2 border-r-2 border-l-4 border-l-blue-800 border-gray-300 w-full">
                 <div className="grid grid-cols-1 md:grid-cols-12 gap-4">
                     {/* Text Side */}
                     <div className="md:col-span-4 lg:col-span-5 flex flex-col justify-between ">
@@ -24,7 +24,7 @@ const HeroRow = ({ mainNews, bottomNews = [] }) => {
                                     {mainNews.title}
                                 </h1>
                             </Link>
-                            <p className="text-gray-600 text-lg leading-relaxed mt-2 md:mt-3 ">
+                            <p className="text-gray-600  text-base md:text-xl leading-relaxed mt-2 md:mt-3 ">
                                 {mainNews.summary}
                             </p>
                             {/* <div className="flex items-center gap-4 text-sm text-gray-500 font-bold uppercase">
@@ -32,15 +32,15 @@ const HeroRow = ({ mainNews, bottomNews = [] }) => {
                             <span>{mainNews.time}</span>
                         </div> */}
                         </div>
-                        <div className="flex gap-2 pt-4">
-                            <div className="px-3 py-1 bg-gray-100 text-xs font-bold text-gray-600">জাতীয়</div>
-                            <div className="px-3 py-1 bg-gray-100 text-xs font-bold text-gray-600">রাজনীতি</div>
+                        <div className="flex gap-2 pt-4 text-base md:text-xl">
+                            <div className="px-3 py-1 bg-gray-100  font-bold text-gray-600">জাতীয়</div>
+                            <div className="px-3 py-1 bg-gray-100  font-bold text-gray-600">রাজনীতি</div>
                         </div>
                     </div>
 
                     {/* Image Side */}
-                    <div className="md:col-span-6 lg:col-span-5">
-                        <Link href={`/news/${mainNews.slug}`} className="block relative h-[250px] md:h-[300px] w-full overflow-hidden">
+                    <div className="md:col-span-5 lg:col-span-5">
+                        <Link href={`/news/${mainNews.slug}`} className="block relative h-[250px] md:h-full w-full overflow-hidden">
                             <Image
                                 src={mainNews.image}
                                 alt={mainNews.title}
@@ -52,7 +52,7 @@ const HeroRow = ({ mainNews, bottomNews = [] }) => {
                     </div>
 
                     {/* Search Side */}
-                    <div className="md:col-span-2">
+                    <div className="md:col-span-3 lg:col-span-2">
                         <LocationSearch />
                     </div>
                 </div>

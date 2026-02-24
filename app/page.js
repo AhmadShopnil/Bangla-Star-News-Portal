@@ -1,5 +1,5 @@
 
-import Header from '@/components/common/Header';
+import Header from '@/components/common/Header/Header';
 import Footer from '@/components/common/Footer';
 import BreakingNews from '@/components/home/BreakingNews';
 import HeroRow from '@/components/home/HeroRow';
@@ -10,6 +10,8 @@ import { getNews, getBreakingNews, getTrendingNews } from '@/lib/api';
 import Image from 'next/image';
 import HeroSection from '@/components/home/HeroSection';
 import Container from '@/components/common/Container';
+import Link from 'next/link';
+import PremiumCategoryBlock from '@/components/home/PremiumCategoryBlock';
 
 export default async function Home() {
   const allNews = await getNews();
@@ -67,7 +69,7 @@ export default async function Home() {
 
         {/* Categories Section */}
         <Container className="">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-2 md:gap-4 xl:gap-6">
             <PremiumCategoryBlock title="জাতীয়" news={allNews.slice(0, 5)} />
             <PremiumCategoryBlock title="আন্তর্জাতিক" news={allNews.slice(3, 8)} />
           </div>
@@ -96,51 +98,3 @@ export default async function Home() {
   );
 }
 
-// Refined Category Block for premium feel
-function PremiumCategoryBlock({ title, news, vertical = false }) {
-  if (!news || news.length === 0) return null;
-  const main = news[0];
-  const others = news.slice(1);
-
-  return (
-    <div className="flex flex-col">
-      <div className="flex items-center justify-between border-t-4 border-primary pt-3 mb-6">
-        <h2 className="text-2xl font-black text-gray-900">{title}</h2>
-        <a href="#" className="text-primary font-bold text-sm tracking-tighter">আরও পড়ুন</a>
-      </div>
-
-      <div className={`${vertical ? 'flex flex-col gap-6' : 'grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-6'}`}>
-        {/* Main Item in Category */}
-        <div className="space-y-4 group">
-          <div className="relative h-48 md:h-60 w-full overflow-hidden">
-            <Image src={main.image} alt={main.title} fill className="object-cover group-hover:scale-110 transition-transform duration-700" />
-          </div>
-          <a href={`/news/${main.slug}`} className="block">
-            <h3 className="text-xl font-bold leading-tight group-hover:text-primary transition-colors line-clamp-2">
-              {main.title}
-            </h3>
-          </a>
-          {!vertical && (
-            <p className="text-gray-500 text-sm line-clamp-3 leading-relaxed">
-              {main.summary}
-            </p>
-          )}
-        </div>
-
-        {/* Other Items in Category */}
-        <div className="flex flex-col divide-y divide-gray-100">
-          {others.map(item => (
-            <a key={item.id} href={`/news/${item.slug}`} className="flex gap-4 py-3 group first:pt-0">
-              <div className="relative h-16 w-24 flex-shrink-0 overflow-hidden">
-                <Image src={item.image} alt={item.title} fill className="object-cover" />
-              </div>
-              <h4 className="text-sm font-bold text-gray-800 group-hover:text-primary transition-colors line-clamp-2 leading-snug">
-                {item.title}
-              </h4>
-            </a>
-          ))}
-        </div>
-      </div>
-    </div>
-  );
-}

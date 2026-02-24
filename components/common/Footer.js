@@ -9,13 +9,13 @@ const Footer = () => {
     return (
         <footer className="bg-secondary text-white pt-16 pb-4 mt-12">
             <Container>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-10 xl:gap-12">
                     {/* About */}
-                    <div className="space-y-6">
+                    <div className="space-y-3 md:space-y-6">
                         <div className="flex bg-white p-2 w-fit">
                             <Logo />
                         </div>
-                        <p className="text-gray-400 text-sm leading-relaxed">
+                        <p className="text-gray-200 text-base md:text-xl leading-relaxed">
                             বাংলা স্টার নিউজ বাংলাদেশের একটি জনপ্রিয় অনলাইন সংবাদ মাধ্যম। আমরা সঠিক ও বস্তুনিষ্ঠ সংবাদ সবার আগে আপনার কাছে পৌঁছে দিতে প্রতিশ্রুতিবদ্ধ।
                         </p>
                         <div className="flex items-center gap-4">
@@ -30,9 +30,9 @@ const Footer = () => {
                     </div>
 
                     {/* Quick Links */}
-                    <div className="space-y-6">
-                        <h3 className="text-xl font-bold border-l-4 border-primary pl-3">বিভাগসমূহ</h3>
-                        <ul className="grid grid-cols-2 gap-3 text-sm text-gray-400">
+                    <div className="space-y-3 md:space-y-6">
+                        <h3 className="text-base md:text-xl font-bold border-l-4 border-primary pl-3 text-gray-100 ">বিভাগসমূহ</h3>
+                        <ul className="grid grid-cols-2 gap-2 text-base md:text-lg text-gray-200 ">
                             <li><Link href="/category/national" className="hover:text-white transition-colors">জাতীয়</Link></li>
                             <li><Link href="/category/politics" className="hover:text-white transition-colors">রাজনীতি</Link></li>
                             <li><Link href="/category/international" className="hover:text-white transition-colors">আন্তর্জাতিক</Link></li>
@@ -43,9 +43,9 @@ const Footer = () => {
                     </div>
 
                     {/* Company */}
-                    <div className="space-y-6">
-                        <h3 className="text-xl font-bold border-l-4 border-primary pl-3">প্রতিষ্ঠান</h3>
-                        <ul className="space-y-3 text-sm text-gray-400">
+                    <div className="space-y-3 md:space-y-6">
+                        <h3 className="text-base md:text-xl font-bold border-l-4 border-primary pl-3 text-gray-100">প্রতিষ্ঠান</h3>
+                        <ul className="space-y-2 text-base md:text-lg text-gray-200 ">
                             <li><Link href="/about" className="hover:text-white transition-colors">আমাদের সম্পর্কে</Link></li>
                             <li><Link href="/contact" className="hover:text-white transition-colors">যোগাযোগ</Link></li>
                             <li><Link href="/privacy" className="hover:text-white transition-colors">গোপনীয়তা নীতি</Link></li>
@@ -54,9 +54,9 @@ const Footer = () => {
                     </div>
 
                     {/* Contact Info */}
-                    <div className="space-y-6">
-                        <h3 className="text-xl font-bold border-l-4 border-primary pl-3">যোগাযোগ</h3>
-                        <div className="text-sm text-gray-400 space-y-4">
+                    <div className="space-y-3 md:space-y-6">
+                        <h3 className="text-base md:text-xl font-bold border-l-4 border-primary pl-3 text-gray-100">যোগাযোগ</h3>
+                        <div className="text-base md:text-lg text-gray-200 space-y-2">
                             <p>১২৩ স্টার ভিলা, সেক্টর ৭, উত্তরা, ঢাকা-১২৩০</p>
                             <p>ফোন: +৮৮০ ২ ১২৩৪৫৬৭</p>
                             <p>ইমেইল: info@banglastar.com</p>
@@ -65,7 +65,7 @@ const Footer = () => {
                 </div>
 
                 {/* Bottom Bar */}
-                <div className="mt-2 pt-8 border-t border-gray-800 text-center text-sm text-gray-500">
+                <div className="mt-3 pt-4 border-t border-gray-600 text-center text-base md:text-lg text-gray-200 ">
                     <p>© {currentYear} বাংলা স্টার নিউজ | সর্বস্বত্ব সংরক্ষিত।</p>
                     <p className="mt-2">Developed and maintained by Mathmozo It</p>
                 </div>

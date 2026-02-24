@@ -8,14 +8,14 @@ const SpecialCategorySection = ({ title, mainNews, sideNews = [] }) => {
 
     return (
         <Container >
-            <div className=" bg-white p-6 border border-gray-300 ">
+            <div className=" bg-white p-2 md:p-4 lg:p-6 border border-gray-300 ">
                 {/* Section Header */}
-                <div className="flex items-center justify-between border-b border-gray-200 pb-3 mb-6">
+                <div className="flex items-center justify-between border-b border-gray-200 pb-1 md:pb-3 mb-2 md:mb-6">
                     <div className="flex items-center gap-3">
                         <div className="w-1.5 h-8 bg-primary"></div>
-                        <h2 className="text-2xl font-black text-gray-900">{title}</h2>
+                        <h2 className="text-xl md:text-2xl font-semibold text-gray-900">{title}</h2>
                     </div>
-                    <Link href="#" className="text-primary font-bold text-sm flex items-center gap-1 hover:underline">
+                    <Link href="#" className="text-primary font-bold text-base md:text-x flex items-center gap-1 hover:underline">
                         আরও খবর
                         <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7"></path></svg>
                     </Link>
@@ -32,13 +32,13 @@ const SpecialCategorySection = ({ title, mainNews, sideNews = [] }) => {
                                 className="object-cover transition-transform duration-700 group-hover:scale-105"
                             />
                         </Link>
-                        <div className="mt-4 space-y-3">
+                        <div className="mt-2 md:mt-3 space-y-1">
                             <Link href={`/news/${mainNews.slug}`}>
                                 <h3 className="text-xl font-black text-gray-900 leading-tight group-hover:text-primary transition-colors">
                                     {mainNews.title}
                                 </h3>
                             </Link>
-                            <p className="text-gray-600 text-sm leading-relaxed line-clamp-3">
+                            <p className="text-gray-600 text-base md:text-xl leading-relaxed line-clamp-2">
                                 {mainNews.summary}
                             </p>
                         </div>
@@ -48,16 +48,16 @@ const SpecialCategorySection = ({ title, mainNews, sideNews = [] }) => {
                     <div className="lg:col-span-8">
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
                             {sideNews.slice(0, 6).map((item, index) => (
-                                <Link key={item.id} href={`/news/${item.slug}`} className="flex gap-4 p-4 border border-gray-200 mb-0 hover:bg-gray-50 transition-colors group h-fit">
-                                    <div className="flex-1 space-y-2">
-                                        <h4 className="text-sm font-bold text-gray-900 leading-snug group-hover:text-primary transition-colors line-clamp-2">
+                                <Link key={item.id} href={`/news/${item.slug}`} className="flex gap-2 p-2 md:gap-4 md:p-4 border border-gray-200 mb-0 hover:bg-gray-50 transition-colors group h-fit">
+                                    <div className="flex-1 space-y-1">
+                                        <h4 className="text-base md:text-xl font-bold text-gray-900 leading-snug group-hover:text-primary transition-colors line-clamp-2">
                                             {item.title}
                                         </h4>
-                                        <p className="text-xs text-gray-500 line-clamp-2 leading-relaxed">
+                                        <p className="text-base md:text-xl text-gray-500 line-clamp-2 leading-relaxed">
                                             {item.summary}
                                         </p>
                                     </div>
-                                    <div className="relative w-20 h-16 flex-shrink-0 overflow-hidden">
+                                    <div className="relative w-20 h-20 flex-shrink-0 overflow-hidden">
                                         <Image
                                             src={item.image}
                                             alt={item.title}

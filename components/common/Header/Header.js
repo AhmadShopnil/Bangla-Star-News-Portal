@@ -1,10 +1,11 @@
 
-import Logo from './Logo';
-import DateTime from './DateTime';
-import Search from './Search';
-import Navbar from './Navbar';
-import Container from './Container';
-import TrendingBar from './TrendingBar';
+import Logo from '../Logo';
+import DateTime from '../DateTime';
+import Search from '../Search';
+import Navbar from '../Navbar';
+import Container from '../Container';
+import TrendingBar from '../TrendingBar';
+import HeaderActions from './HeaderActions';
 
 const Header = () => {
     return (
@@ -27,16 +28,16 @@ const Header = () => {
                         {/* Navigation Items (Managed by Navbar now) */}
                         <Navbar />
                     </div>
-
-                    <div className="flex items-center gap-4">
+                <HeaderActions/>
+                    {/* <div className="flex items-center gap-4">
                         <Search />
                         <div className="hidden md:flex items-center gap-4">
-                            <button className="text-white font-bold text-sm hover:underline">Log In</button>
-                            {/* <button className="bg-[#EE1D23] text-white px-4 py-1.5 font-bold text-sm hover:bg-red-700 transition-colors uppercase">
+                            <button className="text-white font-bold text-[13px] sm:text-sm md:text-lg  hover:underline">Log In</button>
+                            <button className="bg-[#EE1D23] text-white px-4 py-1.5 font-bold text-sm hover:bg-red-700 transition-colors uppercase">
                                 Watch TV
-                            </button> */}
+                            </button>
                         </div>
-                    </div>
+                    </div> */}
                 </Container>
             </div>
 
