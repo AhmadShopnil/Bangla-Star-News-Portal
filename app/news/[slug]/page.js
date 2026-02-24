@@ -42,9 +42,9 @@ export default async function NewsDetailPage({ params }) {
     return (
         <div className="flex flex-col min-h-screen bg-gray-50">
             <Header />
-            <BreakingNews news={breakingNews} />
+       
 
-            <main className="py-8 md:py-12">
+            <main className="py-2">
                 <Container className="grid grid-cols-1 lg:grid-cols-12 gap-4">
                     {/* Main Content */}
                     <article className="lg:col-span-8 p-3 md:p-6 border border-gray-200 ">
@@ -119,12 +119,12 @@ export default async function NewsDetailPage({ params }) {
                                 <span className="w-2 h-6 bg-primary inline-block"></span>
                                 আরো সংবাদ
                             </h2>
-                            <div className="space-y-4">
+                            <div className="space-y-2">
                                 {latestNews.map(item => (
                                     <HorizontalCard key={item.id} news={item} />
                                 ))}
                             </div>
-                            <button className="w-full mt-6 py-2 text-primary font-bold text-sm bg-red-50 hover:bg-red-100 transition-colors">
+                            <button className="w-full mt-6 py-2 text-primary font-bold text-base md:text-xl bg-red-50 hover:bg-red-100 transition-colors">
                                 সব খবর পড়ুন
                             </button>
                         </div>

@@ -48,7 +48,7 @@ export default async function CategoryPage({ params }) {
     return (
         <div className="flex flex-col min-h-screen bg-white">
             <Header />
-            <BreakingNews news={breakingNews} />
+        
 
             <main className="py-6">
                 <Container>

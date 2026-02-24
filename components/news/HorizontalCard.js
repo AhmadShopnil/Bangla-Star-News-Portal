@@ -6,7 +6,7 @@ const HorizontalCard = ({ news }) => {
     if (!news) return null;
 
     return (
-        <div className="flex gap-4 group py-3 border-b border-gray-100 last:border-0 hover:bg-gray-50 transition-colors px-2 rounded">
+        <div className="flex gap-4 group py-2 border-b border-gray-300 last:border-0 hover:bg-gray-50 transition-colors px-2 rounded">
             <Link href={`/news/${news.slug}`} className="relative h-20 w-28 flex-shrink-0 overflow-hidden rounded">
                 <Image
                     src={news.image}
@@ -22,8 +22,8 @@ const HorizontalCard = ({ news }) => {
                         {news.title}
                     </h4>
                 </Link>
-                <div className="flex items-center gap-2 text-base md:text-xl text-gray-500 mt-1">
-                    <span className="text-primary font-bold">{news.category}</span>
+                <div className="flex items-center gap-2 text-base md:text-xl text-gray-800 mt-1">
+                    <span className="text-gray-600 ">{news.category}</span>
                     {/* <span>{news.time}</span> */}
                 </div>
             </div>
