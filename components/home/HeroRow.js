@@ -9,17 +9,17 @@ const HeroRow = ({ mainNews, bottomNews = [] }) => {
 
     return (
         <Container className=" ">
-            <div className='border-t border-gray-400 pb-3'>
+            <div className='border-t border-gray-200 pb-3'>
 
             </div>
             {/* Top Featured Story */}
-            <div className="px-2 md:px-4 lg:px-6 py-2 border-r-2 border-l-4 border-l-blue-800 border-gray-300 w-full">
+            <div className="px-2 md:px-3 lg:px-3 py-2 border-r-2 border-l-4 border-l-blue-800 border-gray-300 w-full">
                 <div className="grid grid-cols-1 md:grid-cols-12 gap-4">
                     {/* Text Side */}
                     <div className="md:col-span-4 lg:col-span-5 flex flex-col justify-between ">
                         <div className=''>
                             <Link href={`/news/${mainNews.slug}`} className="group">
-                                <h1 className="text-2xl md:text-3xl lg:text-3xl font-extrabold text-gray-800 leading-[1.15]
+                                <h1 className="text-2xl md:text-3xl xl:text-4xl  text-gray-950 leading-[1.15]
                              group-hover:text-primary transition-colors">
                                     {mainNews.title}
                                 </h1>

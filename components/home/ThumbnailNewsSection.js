@@ -4,16 +4,16 @@ import MediumCard from '../news/MediumCard';
 import Image from 'next/image';
 import Container from '../common/Container';
 
-const TrendingSection = ({ news = [] }) => {
+const ThumbnailNewsSection = ({ news = [] ,title}) => {
     if (!news || news.length === 0) return null;
 
     return (
         <Container >
-            <div className="p-2 md:p-4  lg:p-6 border border-gray-300 shadow-xs ">
+            <div className=" ">
                 <div className="flex items-center justify-between   border-b border-gray-100 pb-4">
                     <h2 className="text-xl md:text-2xl font-semibold flex items-center gap-3">
                         <span className="w-2 h-8 bg-black"></span>
-                        সবচেয়ে জনপ্রিয়
+                        {title} 
                     </h2>
                     <a href="#" className="text-base md:text-xl text-primary font-bold hover:underline tracking-tight">সবগুলো দেখুন</a>
                 </div>
@@ -28,9 +28,9 @@ const TrendingSection = ({ news = [] }) => {
                                     fill
                                     className="object-cover group-hover:scale-105 transition-transform duration-500"
                                 />
-                                <div className="absolute top-2 left-2 bg-primary text-white w-8 h-8 flex items-center justify-center font-black text-lg shadow-lg">
+                                {/* <div className="absolute top-2 left-2 bg-primary text-white w-8 h-8 flex items-center justify-center font-black text-lg shadow-lg">
                                     {index + 1}
-                                </div>
+                                </div> */}
                             </div>
                             <h3 className="text-base md:text-xl font-semibold text-gray-700 leading-tight group-hover:text-primary transition-colors line-clamp-3">
                                 {item.title}
@@ -46,4 +46,4 @@ const TrendingSection = ({ news = [] }) => {
     );
 };
 
-export default TrendingSection;
+export default ThumbnailNewsSection;

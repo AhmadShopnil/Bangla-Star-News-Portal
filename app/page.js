@@ -1,17 +1,16 @@
 
 import Header from '@/components/common/Header/Header';
 import Footer from '@/components/common/Footer';
-import BreakingNews from '@/components/home/BreakingNews';
+import BreakingNews from '@/components/common/Header/BreakingNews';
 import HeroRow from '@/components/home/HeroRow';
 import CountryWideSection from '@/components/home/CountryWideSection';
 import SpecialCategorySection from '@/components/home/SpecialCategorySection';
-import TrendingSection from '@/components/home/TrendingSection';
 import { getNews, getBreakingNews, getTrendingNews } from '@/lib/api';
-import Image from 'next/image';
-import HeroSection from '@/components/home/HeroSection';
 import Container from '@/components/common/Container';
-import Link from 'next/link';
 import PremiumCategoryBlock from '@/components/home/PremiumCategoryBlock';
+import TrendingNewsSection from '@/components/home/TrendingNewsSection';
+import ThumbnailNewsSection from '@/components/home/ThumbnailNewsSection';
+import TrendingBar from '@/components/common/Header/TrendingBar';
 
 export default async function Home() {
   const allNews = await getNews();
@@ -20,7 +19,7 @@ export default async function Home() {
 
   // Reference structure: 
   // Main featured (1) + Grid below it (4)
-  const mainNews = allNews[0];
+  const mainNews = allNews[2];
   const heroGridNews = allNews.slice(1, 5);
 
   // For CountryWide Section (National)
@@ -38,13 +37,18 @@ export default async function Home() {
   return (
     <div className="flex flex-col min-h-screen bg-[#F8F9FA]">
       <Header />
-      <BreakingNews news={breakingNews} />
+        <TrendingBar />
+      {/* <BreakingNews news={breakingNews} /> */}
       {/* <HeroSection mainNews={mainNews} sideNews={heroGridNews} /> */}
 
       <main className="flex-grow pb-12 space-y-4">
         {/* Dynamic Hero Row matching reference */}
         <HeroRow mainNews={mainNews} bottomNews={heroGridNews} />
-        <TrendingSection news={trendingNews} />
+        <TrendingNewsSection/>
+        <ThumbnailNewsSection
+        title={"এক্সক্লুসিভ"}
+         news={trendingNews}
+          />
         {/* Politics Section */}
         <SpecialCategorySection
           title="রাজনীতি"

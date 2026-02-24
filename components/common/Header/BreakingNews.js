@@ -1,15 +1,15 @@
 
 import Link from 'next/link';
-import Container from '../common/Container';
+import Container from '../Container';
 
 const BreakingNews = ({ news = [] }) => {
     if (!news || news.length === 0) return null;
 
     return (
-        <div className="bg-white  overflow-hidden  ">
-            <Container className="flex items-center">
+        <div className="bg-white  overflow-hidden  lg:ml-[210px]  ">
+            <Container className="flex items-center ">
                 {/* Label */}
-                <div className="flex items-center gap-2 bg-black text-white px-3 my-1 py-1 text-xs font-black whitespace-nowrap z-10 text-[13px] sm:text-sm md:text-lg">
+                <div className="flex items-center gap-2 bg-black text-white px-3 my-1 py-0.5 text-xs font-black whitespace-nowrap z-10 text-[13px] sm:text-sm md:text-lg">
                     <span className="relative flex h-2 w-2">
                         <span className="animate-ping absolute inline-flex h-full w-full bg-red-400 opacity-75"></span>
                         <span className="relative inline-flex h-2 w-2 bg-primary"></span>

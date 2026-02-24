@@ -1,7 +1,7 @@
 
 import Header from '@/components/common/Header/Header';
 import Footer from '@/components/common/Footer';
-import BreakingNews from '@/components/home/BreakingNews';
+import BreakingNews from '@/components/common/Header/BreakingNews';
 import MediumCard from '@/components/news/MediumCard';
 import { searchNews, getBreakingNews } from '@/lib/api';
 import Container from '@/components/common/Container';

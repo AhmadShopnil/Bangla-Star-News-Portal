@@ -1,6 +1,6 @@
 
 import Link from 'next/link';
-import Logo from './Logo';
+import Logo from './Header/Logo';
 import Container from './Container';
 
 const Footer = () => {

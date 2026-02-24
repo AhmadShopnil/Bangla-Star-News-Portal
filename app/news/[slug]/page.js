@@ -1,7 +1,7 @@
 
 import Header from '@/components/common/Header/Header';
 import Footer from '@/components/common/Footer';
-import BreakingNews from '@/components/home/BreakingNews';
+import BreakingNews from '@/components/common/Header/BreakingNews';
 import ShareButtons from '@/components/news/ShareButtons';
 import PrintButton from '@/components/news/PrintButton';
 import FBComments from '@/components/news/FBComments';
