@@ -15,7 +15,7 @@ const SpecialCategorySection = ({ title, mainNews, sideNews = [] }) => {
                         <div className="w-1.5 h-8 bg-primary"></div>
                         <h2 className="text-xl md:text-2xl font-semibold text-gray-900">{title}</h2>
                     </div>
-                    <Link href="#" className="text-primary font-bold text-base md:text-x flex items-center gap-1 hover:underline">
+                    <Link href="#" className="text-primary font-bold text-base md:text-xl flex items-center gap-1 hover:underline">
                         আরও খবর
                         <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7"></path></svg>
                     </Link>

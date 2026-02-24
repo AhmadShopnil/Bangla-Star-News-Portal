@@ -35,6 +35,9 @@ const TrendingSection = ({ news = [] }) => {
                             <h3 className="text-base md:text-xl font-semibold text-gray-700 leading-tight group-hover:text-primary transition-colors line-clamp-3">
                                 {item.title}
                             </h3>
+                              <p className="text-gray-500 text-base md:text-xl line-clamp-2 leading-relaxed ">
+                            {item.summary}
+                            </p>
                         </Link>
                     ))}
                 </div>

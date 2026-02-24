@@ -25,11 +25,11 @@ export default function PremiumCategoryBlock({ title, news, vertical = false }) 
               {main.title}
             </h3>
           </a>
-          {!vertical && (
-            <p className="text-gray-500 text-base md:text-xl line-clamp-3 leading-relaxed">
+         
+            <p className="text-gray-500 text-base md:text-xl line-clamp-2 leading-relaxed ">
               {main.summary}
             </p>
-          )}
+       
         </div>
 
         {/* Other Items in Category */}

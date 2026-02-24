@@ -64,8 +64,11 @@ const CountryWideSection = ({ title, featureNews, gridNews = [] }) => {
                                 />
                             </div>
                             <h4 className="text-base md:text-xl font-bold text-gray-700 leading-snug group-hover:text-primary transition-colors line-clamp-3">
-                                {news.title}
+                                {news?.title}
                             </h4>
+                               <p className="text-gray-500 text-base md:text-xl line-clamp-2 leading-relaxed ">
+                            {news?.summary}
+                            </p>
                         </Link>
                     ))}
                 </div>
