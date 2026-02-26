@@ -10,7 +10,7 @@ module.exports = {
     extend: {
       colors: {
         primary: "#EE1D23",
-        secondary: "#003366",
+        secondary: "#671A1B",
       },
       fontFamily: {
         sans: ["var(--font-solaiman-lipi)", "ui-sans-serif", "system-ui"],

@@ -20,14 +20,14 @@ const Header = async() => {
             {/* Main Section with Logo and Nav items */}
             <div className="bg-secondary text-white py-0">
                 <Container className="flex items-center justify-between min-h-[50px] relative">
-                    <div className="flex items-center gap-4">
+                    <div className="flex items-start ">
                         {/* Logo Container - Absolute Positioned to Overlap */}
                         <div className="absolute top-[9px] left-0 md:left-6 z-[70]">
                             <Logo />
                         </div>
 
                         {/* Empty spacer for the logo on desktop */}
-                        <div className="w-[120px] lg:w-[150px] hidden md:block"></div>
+                        <div className="w-[120px] lg:w-[50px] hidden md:block"></div>
 
                         {/* Navigation Items (Managed by Navbar now) */}
                         <Navbar />

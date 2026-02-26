@@ -11,11 +11,11 @@ const ThumbnailNewsSection = ({ news = [] ,title}) => {
         <Container >
             <div className=" ">
                 <div className="flex items-center justify-between   border-b border-gray-100 pb-4">
-                    <h2 className="text-xl md:text-2xl font-semibold flex items-center gap-3">
-                        <span className="w-2 h-8 bg-black"></span>
+                    <h2 className="text-xl md:text-2xl font-semibold flex items-center gap-3 text-secondary">
+                        <span className="w-2 h-8 bg-secondary"></span>
                         {title} 
                     </h2>
-                    <a href="#" className="text-base md:text-xl text-primary font-bold hover:underline tracking-tight">সবগুলো দেখুন</a>
+                    <a href="#" className="text-base md:text-xl text-secondary font-bold hover:underline tracking-tight">সবগুলো দেখুন</a>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 lg:gap-8">
@@ -32,7 +32,7 @@ const ThumbnailNewsSection = ({ news = [] ,title}) => {
                                     {index + 1}
                                 </div> */}
                             </div>
-                            <h3 className="text-base md:text-xl font-semibold text-gray-700 leading-tight group-hover:text-primary transition-colors line-clamp-3">
+                            <h3 className="text-gray-600 text-base md:text-[22px] leading-[28px] group-hover:text-primary font-semibold transition-colors line-clamp-2">
                                 {item.title}
                             </h3>
                               <p className="text-gray-500 text-base md:text-xl line-clamp-2 leading-relaxed ">

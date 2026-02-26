@@ -20,7 +20,7 @@ const trendingTopics = [
 
 const TrendingBar = () => {
   return (
-    <div className="bg-white py-3.5">
+    <div className=" py-3.5">
       <Container>
         <div className="flex items-center gap-4">
 

@@ -13,18 +13,18 @@ const HeroRow = ({ mainNews, bottomNews = [] }) => {
 
             </div>
             {/* Top Featured Story */}
-            <div className="px-2 md:px-3 lg:px-3 py-2 border-r-2 border-l-4 border-l-blue-800 border-gray-300 w-full">
+            <div className="px-2 md:px-3 lg:px-3 py-2 border-r-2 border-l-4 border-l-secondary border-gray-300 w-full">
                 <div className="grid grid-cols-1 md:grid-cols-12 gap-4">
                     {/* Text Side */}
                     <div className="md:col-span-4 lg:col-span-5 flex flex-col justify-between ">
                         <div className=''>
                             <Link href={`/news/${mainNews.slug}`} className="group">
-                                <h1 className="text-2xl md:text-3xl xl:text-4xl  text-gray-950 leading-[1.15]
+                                <h1 className="text-2xl md:text-3xl xl:text-5xl  text-gray-950 leading-[1.15]
                              group-hover:text-primary transition-colors">
                                     {mainNews.title}
                                 </h1>
                             </Link>
-                            <p className="text-gray-600  text-base md:text-xl leading-relaxed mt-2 md:mt-3 ">
+                            <p className="text-gray-600  text-base md:text-2xl leading-relaxed mt-2 md:mt-3 ">
                                 {mainNews.summary}
                             </p>
                             {/* <div className="flex items-center gap-4 text-sm text-gray-500 font-bold uppercase">
@@ -58,28 +58,7 @@ const HeroRow = ({ mainNews, bottomNews = [] }) => {
                 </div>
             </div>
 
-            {/* Grid Below Hero */}
-            {/* <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-8">
-                {bottomNews.map((news) => (
-                    <Link key={news.id} href={`/news/${news.slug}`} className="group bg-white p-3 border border-transparent hover:border-gray-200 hover:shadow-md transition-all">
-                        <div className="relative h-40 w-full mb-3 overflow-hidden">
-                            <Image
-                                src={news.image}
-                                alt={news.title}
-                                fill
-                                className="object-cover group-hover:scale-105 transition-transform duration-500"
-                            />
-                        </div>
-                        <h3 className="text-md font-bold text-gray-900 leading-snug group-hover:text-primary transition-colors line-clamp-3">
-                            {news.title}
-                        </h3>
-                        <div className="flex items-center gap-2 mt-2 text-[10px] font-bold text-gray-500 uppercase">
-                            <span className="text-primary">{news.category}</span>
-                            <span>{news.time}</span>
-                        </div>
-                    </Link>
-                ))}
-            </div> */}
+           
         </Container>
     );
 };

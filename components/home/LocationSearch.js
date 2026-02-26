@@ -50,14 +50,14 @@ const LocationSearch = () => {
   return (
     <div className="border border-gray-200 p-2 md:p-3 lg:p-5 rounded-sm shadow-sm h-full flex flex-col justify-between">
       <div>
-        <h3 className="text-xl font-bold text-gray-800 mb-2 border-b pb-2 border-gray-100 flex items-center justify-center">
+        <h3 className="text-xl md:text-2xl font-bold text-secondary  border-b  border-gray-100 flex items-center justify-center">
           খুঁজুন
         </h3>
 
         <div className="space-y-3">
           {/* Division */}
           <div>
-            <label className="block text-sm font-bold text-gray-700 mb-1">
+            <label className=" text-base md:text-lg font-semibold text-secondary mb-1">
               বিভাগ
             </label>
             <select
@@ -68,7 +68,7 @@ const LocationSearch = () => {
                 setSelectedDistrict('');
                 setSelectedUpazila('');
               }}
-              className="w-full p-2.5 bg-gray-50 border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block focus:outline-none"
+              className="w-full p-2.5 bg-gray-50 border border-gray-300 text-gray-900 text-base focus:ring-blue-500 focus:border-blue-500 block focus:outline-none"
             >
               <option value="">বিভাগ নির্বাচন করুন</option>
               {divisions.map((div) => (
@@ -81,7 +81,7 @@ const LocationSearch = () => {
 
           {/* District */}
           <div>
-            <label className="block text-sm font-bold text-gray-700 mb-1">
+            <label className="text-base md:text-lg font-semibold text-secondary mb-1">
               জেলা
             </label>
             <select
@@ -92,7 +92,7 @@ const LocationSearch = () => {
                 setSelectedUpazila('');
               }}
               disabled={!selectedDivision}
-              className="w-full p-2.5 bg-gray-50 border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block disabled:opacity-50 focus:outline-none"
+              className="w-full p-2.5 bg-gray-50 border border-gray-300 text-gray-900 text-base focus:ring-blue-500 focus:border-blue-500 block disabled:opacity-50 focus:outline-none"
             >
               <option value="">জেলা নির্বাচন করুন</option>
               {availableDistricts.map((dist) => (
@@ -105,14 +105,14 @@ const LocationSearch = () => {
 
           {/* Upazila */}
           <div>
-            <label className="block text-sm font-bold text-gray-700 mb-1">
+            <label className="text-base md:text-lg font-semibold text-secondary mb-1">
               উপজেলা
             </label>
             <select
               value={selectedUpazila}
               onChange={(e) => setSelectedUpazila(e.target.value)}
               disabled={!selectedDistrict}
-              className="w-full p-2.5 bg-gray-50 border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block disabled:opacity-50 focus:outline-none"
+              className="w-full p-2.5 bg-gray-50 border border-gray-300 text-gray-900 text-base focus:ring-blue-500 focus:border-blue-500 block disabled:opacity-50 focus:outline-none"
             >
               <option value="">উপজেলা নির্বাচন করুন</option>
               {availableUpazilas.map((up) => (
@@ -127,7 +127,7 @@ const LocationSearch = () => {
 
       <button
         onClick={handleSearch}
-        className="mt-6 w-full bg-[#003366] hover:bg-blue-900 text-white font-bold py-3 px-4 flex items-center justify-center gap-2 transition-colors uppercase tracking-wider"
+        className="mt-6 w-full bg-secondary hover:bg-secondary text-white font-bold py-3 px-4 flex items-center justify-center gap-2 transition-colors uppercase tracking-wider"
       >
         <SearchIcon />
         অনুসন্ধান করুন

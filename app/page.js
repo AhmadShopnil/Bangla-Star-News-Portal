@@ -35,7 +35,7 @@ export default async function Home() {
   const politicsSide = allNews.slice(0, 8);
 
   return (
-    <div className="flex flex-col min-h-screen bg-[#F8F9FA]">
+    <div className="flex flex-col min-h-screen bg-[#eff3f6]">
       <Header />
         <TrendingBar />
       {/* <BreakingNews news={breakingNews} /> */}

@@ -26,8 +26,8 @@ const Navbar = () => {
     return (
         <nav className="relative">
             {/* Desktop Navbar */}
-            <div className="hidden lg:flex items-center">
-                <ul className="flex items-center">
+            <div className="hidden lg:flex items-center ">
+                <ul className="flex items-start">
                     {navItems.map((item) => (
                         <li key={item.id} className="relative group">
                             <Link

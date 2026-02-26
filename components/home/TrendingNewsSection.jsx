@@ -96,7 +96,7 @@ export default function TrendingNews() {
            
                   {/* Text */}
                   <div className="flex-1">
-                    <h3 className="text-gray-950 text-base md:text-[22px] group-hover:text-red-600 ">
+                    <h3 className="text-gray-600 text-base md:text-[22px] leading-[28px] group-hover:text-primary font-semibold ">
                       {news.title}
                     </h3>
 

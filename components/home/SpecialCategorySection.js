@@ -10,12 +10,12 @@ const SpecialCategorySection = ({ title, mainNews, sideNews = [] }) => {
         <Container >
             <div className=" bg-white p-2 md:p-4 lg:p-6 border border-gray-300 ">
                 {/* Section Header */}
-                <div className="flex items-center justify-between border-b border-gray-200 pb-1 md:pb-3 mb-2 md:mb-6">
+                <div className="flex items-center justify-between border-b border-gray-200 pb-1 md:pb-3 mb-2 md:mb-6 ">
                     <div className="flex items-center gap-3">
-                        <div className="w-1.5 h-8 bg-primary"></div>
-                        <h2 className="text-xl md:text-2xl font-semibold text-gray-900">{title}</h2>
+                        <div className="w-1.5 h-8 bg-secondary"></div>
+                        <h2 className="text-xl md:text-2xl font-semibold text-secondary">{title}</h2>
                     </div>
-                    <Link href="#" className="text-primary font-bold text-base md:text-xl flex items-center gap-1 hover:underline">
+                    <Link href="#" className="text-secondary font-bold text-base md:text-xl flex items-center gap-1 hover:underline">
                         আরও খবর
                         <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7"></path></svg>
                     </Link>
@@ -34,7 +34,7 @@ const SpecialCategorySection = ({ title, mainNews, sideNews = [] }) => {
                         </Link>
                         <div className="mt-2 md:mt-3 space-y-1">
                             <Link href={`/news/${mainNews.slug}`}>
-                                <h3 className="text-xl font-black text-gray-900 leading-tight group-hover:text-primary transition-colors">
+                                <h3 className="text-gray-600 text-base md:text-[22px] leading-[28px] group-hover:text-primary font-semibold transition-colors">
                                     {mainNews.title}
                                 </h3>
                             </Link>
@@ -50,7 +50,7 @@ const SpecialCategorySection = ({ title, mainNews, sideNews = [] }) => {
                             {sideNews.slice(0, 6).map((item, index) => (
                                 <Link key={item.id} href={`/news/${item.slug}`} className="flex gap-2 p-2 md:gap-4 md:p-4 border border-gray-200 mb-0 hover:bg-gray-50 transition-colors group h-fit">
                                     <div className="flex-1 space-y-1">
-                                        <h4 className="text-base md:text-xl font-bold text-gray-900 leading-snug group-hover:text-primary transition-colors line-clamp-2">
+                                        <h4 className="text-gray-600 text-base md:text-[22px] leading-[28px] group-hover:text-primary font-semibold transition-colors line-clamp-2">
                                             {item.title}
                                         </h4>
                                         <p className="text-base md:text-xl text-gray-500 line-clamp-2 leading-relaxed">

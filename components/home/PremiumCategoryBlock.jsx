@@ -10,8 +10,8 @@ export default function PremiumCategoryBlock({ title, news, vertical = false }) 
   return (
     <div className="flex flex-col">
       <div className="flex items-center justify-between border-t-4 border-primary pt-3 mb-6">
-        <h2 className="text-2xl font-black text-gray-900">{title}</h2>
-        <a href="#" className="text-primary font-bold text-base md:text-xl tracking-tighter">আরও পড়ুন</a>
+        <h2 className="text-2xl font-semibold  text-secondary">{title}</h2>
+        <a href="#" className="text-secondary font-bold text-base md:text-xl tracking-tighter">আরও পড়ুন</a>
       </div>
 
       <div className={`${vertical ? 'flex flex-col gap-6' : 'grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-6'}`}>
@@ -21,7 +21,7 @@ export default function PremiumCategoryBlock({ title, news, vertical = false }) 
             <Image src={main.image} alt={main.title} fill className="object-cover group-hover:scale-110 transition-transform duration-700" />
           </div>
           <a href={`/news/${main.slug}`} className="block">
-            <h3 className="text-lg md:text-xl font-bold leading-tight group-hover:text-primary transition-colors line-clamp-2">
+            <h3 className="text-gray-600 text-base md:text-[22px] leading-[28px] group-hover:text-primary font-semibold transition-colors line-clamp-2">
               {main.title}
             </h3>
           </a>
@@ -39,17 +39,17 @@ export default function PremiumCategoryBlock({ title, news, vertical = false }) 
           key={item.id}>
 
           <Link
-           href={`/news/${item.slug}`} className="flex gap-2 md;gap-4 py-3 group first:pt-0">
+           href={`/news/${item.slug}`} className="flex gap-2 md:gap-4 py-3 group first:pt-0">
               <div className="relative h-16 w-24 flex-shrink-0 overflow-hidden">
                 <Image src={item.image} alt={item.title} fill className="object-cover" />
               </div>
              <div className='space-y-1'>
-               <h4 className="text-base md:text-xl font-bold text-gray-700 group-hover:text-primary transition-colors line-clamp-2 leading-snug">
+               <h4 className="text-gray-600 text-base md:text-[22px] leading-[28px] group-hover:text-primary font-semibold transition-colors line-clamp-2 leading-snug">
                 {item.title}
               </h4>
-                  <p className="text-gray-600 text-base md:text-xl leading-relaxed line-clamp-1">
+                  {/* <p className="text-gray-600 text-base md:text-xl leading-relaxed line-clamp-1">
                  {item.summary}
-               </p>
+               </p> */}
              </div>
                 
             </Link>
