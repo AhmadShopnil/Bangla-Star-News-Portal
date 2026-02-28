@@ -6,11 +6,15 @@ import ShareButtons from '@/components/news/ShareButtons';
 import PrintButton from '@/components/news/PrintButton';
 import FBComments from '@/components/news/FBComments';
 import HorizontalCard from '@/components/news/HorizontalCard';
-import { getNewsBySlug, getBreakingNews, getNews } from '@/lib/api';
+import { getNewsBySlug, getBreakingNews, getNews, getTrendingNews } from '@/lib/api';
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import Container from '@/components/common/Container';
 import CopyButton from '@/components/news/CopyButton';
+import Link from 'next/link';
+import ThumbnailNewsSection from '@/components/home/ThumbnailNewsSection';
+import { FaGoogle, FaWhatsapp } from "react-icons/fa";
+
 
 export async function generateMetadata({ params }) {
     const { slug } = await params;
@@ -24,6 +28,8 @@ export async function generateMetadata({ params }) {
 }
 
 export default async function NewsDetailPage({ params }) {
+
+    const trendingNews = await getTrendingNews();
     const { slug } = await params;
     // console.log("slug from details page", slug)
     const news = await getNewsBySlug(slug);
@@ -42,7 +48,6 @@ export default async function NewsDetailPage({ params }) {
     return (
         <div className="flex flex-col min-h-screen bg-gray-50">
             <Header />
-       
 
             <main className="py-2">
                 <Container className="grid grid-cols-1 lg:grid-cols-12 gap-4">
@@ -52,7 +57,7 @@ export default async function NewsDetailPage({ params }) {
                             {/* Category and Date */}
                             <div className="flex items-center gap-4 text-base md:text-xl">
                                 <span className="bg-primary text-white px-3 py-1 font-bold">{news.category}</span>
-                                <span className="text-gray-500 font-medium">{news.date} | {news.time}</span>
+
                             </div>
 
                             {/* Title */}
@@ -69,12 +74,13 @@ export default async function NewsDetailPage({ params }) {
                                     <div>
                                         <p className="text-base md:text-xl font-bold text-gray-800">{news.author}</p>
                                         <p className="text-base md:text-xl text-gray-500">বিশেষ সংবাদদাতা</p>
+                                        <span className="text-gray-500 font-medium">{news.date} | {news.time}</span>
                                     </div>
                                 </div>
                                 <div className="flex items-center gap-3">
-                                    <ShareButtons title={news.title} url={fullUrl} /> 
+                                    <ShareButtons title={news.title} url={fullUrl} />
                                     <PrintButton />
-                                     {/* <CopyButton url={fullUrl} /> */}
+                                    {/* <CopyButton url={fullUrl} /> */}
                                 </div>
                             </div>
 
@@ -90,29 +96,75 @@ export default async function NewsDetailPage({ params }) {
                             </div>
 
                             {/* Content */}
-                            <div className="prose prose-lg max-w-none text-base md:text-xl text-gray-800 leading-[1.8] font-medium space-y-6">
+                            <div className="text-base md:text-xl lg:md:text-[22px] text-gray-800  font-medium">
                                 {/* Split content by newlines and wrap in paragraphs */}
                                 {news?.content?.split('\n').map((para, i) => (
                                     <p key={i} className="mb-4">{para}</p>
                                 ))}
 
-                                {/* Mock additional content for visual length */}
-                                <p>এ বিষয়ে আরও বিস্তারিত জানতে আমাদের সাথেই থাকুন। দেশ ও বিদেশের সর্বশেষ সব খবর সবার আগে পেতে বাংলা স্টার নিউজ-এর সোশ্যাল মিডিয়া পেজগুলোতে লাইক দিয়ে যুক্ত হন।</p>
-                                <p>বাংলাদেশের অগ্রযাত্রায় আমরা আপনার গর্বিত অংশীদার। সারা দেশের মানুষের প্রাণের কথাগুলো সংবাদ আকারে সবার কাছে তুলে আনাই আমাদের মূল লক্ষ্য। কোনো সংবাদ সম্পর্কে আপনার কোনো অভিযোগ বা পরামর্শ থাকলে আমাদের জানাতে ভুলবেন না।</p>
+
                             </div>
 
                             {/* Share and Tags */}
-                            {/* <div className="pt-12 border-t border-gray-100">
-                                <ShareButtons title={news.title} url={fullUrl} />
-                            </div> */}
+                            <div className="pt-10 border-t border-gray-200">
+                                <div className="bg-gradient-to-r from-blue-50 to-gray-50 rounded-sm p-6 md:p-8 shadow-sm">
 
-                            {/* Comments Section */}
-                            <FBComments url={fullUrl} />
+                                    <h3 className="text-lg md:text-2xl font-semibold text-gray-800 mb-6">
+                                        আপডেটেড খবর পেতে আমাদের সাথে যুক্ত থাকুন
+                                    </h3>
+
+                                    <div className="flex flex-col md:flex-row gap-4">
+
+                                        {/* Google News */}
+                                        <Link
+                                            href="#"
+                                            className="flex items-center gap-4 bg-white hover:bg-blue-50 border border-gray-200 rounded-xl px-5 py-4 transition-all duration-300 hover:shadow-md group"
+                                        >
+                                            <div className="w-12 h-12 flex items-center justify-center rounded-full bg-blue-100 text-blue-700 text-xl group-hover:scale-110 transition">
+                                                <FaGoogle />
+                                            </div>
+                                            <div>
+                                                <p className="text-base font-semibold text-gray-800">
+                                                    গুগল নিউজ চ্যানেল
+                                                </p>
+                                                <p className="text-sm text-gray-500">
+                                                    ফলো করুন সর্বশেষ আপডেট পেতে
+                                                </p>
+                                            </div>
+                                        </Link>
+
+                                        {/* WhatsApp Channel */}
+                                        <Link
+                                            href="#"
+                                            className="flex items-center gap-4 bg-white hover:bg-green-50 border border-gray-200 rounded-xl px-5 py-4 transition-all duration-300 hover:shadow-md group"
+                                        >
+                                            <div className="w-12 h-12 flex items-center justify-center rounded-full bg-green-100 text-green-600 text-xl group-hover:scale-110 transition">
+                                                <FaWhatsapp />
+                                            </div>
+                                            <div>
+                                                <p className="text-base font-semibold text-gray-800">
+                                                    হোয়াটসঅ্যাপ চ্যানেল
+                                                </p>
+                                                <p className="text-sm text-gray-500">
+                                                    সরাসরি নোটিফিকেশন পেতে যুক্ত থাকুন
+                                                </p>
+                                            </div>
+                                        </Link>
+
+                                    </div>
+                                </div>
+                            </div>
+
+
                         </div>
                     </article>
 
                     {/* Sidebar */}
                     <aside className="lg:col-span-4 space-y-6">
+                        {/* Ad Placeholder */}
+                        <div className="bg-gray-100 h-64 flex items-center justify-center border-2 border-dashed border-gray-300">
+                            <span className="text-gray-400 font-bold uppercase tracking-widest text-xs">বিজ্ঞাপন / Advertisement</span>
+                        </div>
                         {/* Latest News */}
                         <div className="p-3 md:p-6  border border-gray-200">
                             <h2 className="text-xl font-bold mb-6 border-b-2 border-primary pb-2 flex items-center gap-2">
@@ -129,13 +181,14 @@ export default async function NewsDetailPage({ params }) {
                             </button>
                         </div>
 
-                        {/* Ad Placeholder */}
-                        <div className="bg-gray-100 h-64 flex items-center justify-center border-2 border-dashed border-gray-300">
-                            <span className="text-gray-400 font-bold uppercase tracking-widest text-xs">বিজ্ঞাপন / Advertisement</span>
-                        </div>
+
                     </aside>
                 </Container>
             </main>
+            <ThumbnailNewsSection
+                title={"আরও খবর"}
+                news={trendingNews}
+            />
 
             <Footer />
         </div>

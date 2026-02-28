@@ -16,6 +16,7 @@ const navItems = [
     { id: 7, name: "জীবনযাপন", slug: "/category/lifestyle" },
     { id: 8, name: "প্রযুক্তি", slug: "/category/technology" },
     { id: 9, name: "অর্থনীতি", slug: "/category/economics" },
+    { id: 10, name: "ভিডিও", slug: "/video" },
 ];
 
 
@@ -32,7 +33,7 @@ const Navbar = () => {
                         <li key={item.id} className="relative group">
                             <Link
                                 href={item.slug}
-                                className={`px-3 py-4 block text-[13px] sm:text-sm md:text-lg font-semibold tracking-wide transition-colors duration-200 flex items-center gap-1 ${pathname === item.slug
+                                className={`px-3 py-4 block text-[13px] sm:text-sm md:text-xl font-semibold tracking-wide transition-colors duration-200 flex items-center gap-1 ${pathname === item.slug
                                     ? 'text-white underline decoration-2 underline-offset-8'
                                     : 'text-white/90 hover:text-white'
                                     }`}

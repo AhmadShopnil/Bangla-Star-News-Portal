@@ -15,7 +15,11 @@ const ThumbnailNewsSection = ({ news = [] ,title}) => {
                         <span className="w-2 h-8 bg-secondary"></span>
                         {title} 
                     </h2>
-                    <a href="#" className="text-base md:text-xl text-secondary font-bold hover:underline tracking-tight">সবগুলো দেখুন</a>
+                     <Link href={`/category/national`} className="text-xl md:text-2xl font-semibold text-secondary  flex items-center gap-1 hover:underline">
+                       সবগুলো দেখুন
+                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7"></path></svg>
+                    </Link>
+                   
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 lg:gap-8">
@@ -32,7 +36,7 @@ const ThumbnailNewsSection = ({ news = [] ,title}) => {
                                     {index + 1}
                                 </div> */}
                             </div>
-                            <h3 className="text-gray-600 text-base md:text-[22px] leading-[28px] group-hover:text-primary font-semibold transition-colors line-clamp-2">
+                            <h3 className="text-gray-600 text-lg md:text-[22px] leading-[24px] md:leading-[26px] group-hover:text-primary font-semibold transition-colors line-clamp-2">
                                 {item.title}
                             </h3>
                               <p className="text-gray-500 text-base md:text-xl line-clamp-2 leading-relaxed ">

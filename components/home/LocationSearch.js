@@ -127,7 +127,7 @@ const LocationSearch = () => {
 
       <button
         onClick={handleSearch}
-        className="mt-6 w-full bg-secondary hover:bg-secondary text-white font-bold py-3 px-4 flex items-center justify-center gap-2 transition-colors uppercase tracking-wider"
+        className="mt-3 md:mt-6 w-full bg-secondary hover:bg-secondary text-white font-bold py-2 px-3 md:py-3 md:px-4 flex items-center justify-center gap-2 transition-colors uppercase tracking-wider"
       >
         <SearchIcon />
         অনুসন্ধান করুন

@@ -4,7 +4,7 @@ import Image from 'next/image';
 import Container from '../common/Container';
 import LocationSearch from './LocationSearch';
 
-const HeroRow = ({ mainNews, bottomNews = [] }) => {
+const HeronNewsSection = ({ mainNews, bottomNews = [] }) => {
     if (!mainNews) return null;
 
     return (
@@ -33,8 +33,8 @@ const HeroRow = ({ mainNews, bottomNews = [] }) => {
                         </div> */}
                         </div>
                         <div className="flex gap-2 pt-4 text-base md:text-xl">
-                            <div className="px-3 py-1 bg-gray-100  font-bold text-gray-600">জাতীয়</div>
-                            <div className="px-3 py-1 bg-gray-100  font-bold text-gray-600">রাজনীতি</div>
+                            <div className="px-3 py-1 bg-gray-200  font-bold text-gray-600">জাতীয়</div>
+                            <div className="px-3 py-1 bg-gray-200  font-bold text-gray-600">রাজনীতি</div>
                         </div>
                     </div>
 
@@ -63,4 +63,4 @@ const HeroRow = ({ mainNews, bottomNews = [] }) => {
     );
 };
 
-export default HeroRow;
+export default HeronNewsSection;

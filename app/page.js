@@ -1,21 +1,22 @@
 
 import Header from '@/components/common/Header/Header';
 import Footer from '@/components/common/Footer';
-import BreakingNews from '@/components/common/Header/BreakingNews';
-import HeroRow from '@/components/home/HeroRow';
 import CountryWideSection from '@/components/home/CountryWideSection';
 import SpecialCategorySection from '@/components/home/SpecialCategorySection';
-import { getNews, getBreakingNews, getTrendingNews } from '@/lib/api';
+import { getNews, getBreakingNews, getTrendingNews, getVideoNews } from '@/lib/api';
 import Container from '@/components/common/Container';
 import PremiumCategoryBlock from '@/components/home/PremiumCategoryBlock';
 import TrendingNewsSection from '@/components/home/TrendingNewsSection';
 import ThumbnailNewsSection from '@/components/home/ThumbnailNewsSection';
 import TrendingBar from '@/components/common/Header/TrendingBar';
+import HeronNewsSection from '@/components/home/HeronNewsSection';
+import VideoSection from '@/components/home/VideoSection';
 
 export default async function Home() {
   const allNews = await getNews();
   const breakingNews = await getBreakingNews();
   const trendingNews = await getTrendingNews();
+  const videoNews = await getVideoNews();
 
   // Reference structure: 
   // Main featured (1) + Grid below it (4)
@@ -35,32 +36,48 @@ export default async function Home() {
   const politicsSide = allNews.slice(0, 8);
 
   return (
-    <div className="flex flex-col min-h-screen bg-[#eff3f6]">
+    <div className=" min-h-screen bg-[#eff3f6]">
       <Header />
-        <TrendingBar />
-      {/* <BreakingNews news={breakingNews} /> */}
-      {/* <HeroSection mainNews={mainNews} sideNews={heroGridNews} /> */}
+      {/* Ad Space  */}
+      <Container >
+        <div className=" h-32 bg-gray-100 border-2 border-dashed border-gray-300 flex items-center justify-center font-bold text-gray-400">
+          ADVERTISEMENT
+        </div>
 
-      <main className="flex-grow pb-12 space-y-4">
+      </Container>
+      <TrendingBar />
+
+
+      <main className="pb-12 space-y-4">
         {/* Dynamic Hero Row matching reference */}
-        <HeroRow mainNews={mainNews} bottomNews={heroGridNews} />
-        <TrendingNewsSection/>
+        <HeronNewsSection mainNews={mainNews} bottomNews={heroGridNews} />
+        <TrendingNewsSection />
         <ThumbnailNewsSection
-        title={"এক্সক্লুসিভ"}
-         news={trendingNews}
-          />
+          title={"এক্সক্লুসিভ"}
+          news={trendingNews}
+        />
         {/* Politics Section */}
         <SpecialCategorySection
           title="রাজনীতি"
           mainNews={politicsMain}
           sideNews={politicsSide}
         />
+        {/* Ad Space  */}
+        <Container >
+          <div className=" h-32 bg-gray-100 border-2 border-dashed border-gray-300 flex items-center justify-center font-bold text-gray-400">
+            ADVERTISEMENT
+          </div>
+
+        </Container>
         {/* Country Wide Section */}
         <CountryWideSection
           title="সারাদেশ"
           featureNews={nationalMain}
           gridNews={nationalGrid}
         />
+
+        {/* Video News Section */}
+        <VideoSection videos={videoNews} />
 
         {/* Sports Section */}
         <SpecialCategorySection

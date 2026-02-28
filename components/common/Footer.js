@@ -47,6 +47,7 @@ const Footer = () => {
                         <h3 className="text-base md:text-xl font-bold border-l-4 border-primary pl-3 text-gray-100">প্রতিষ্ঠান</h3>
                         <ul className="space-y-2 text-base md:text-lg text-gray-200 ">
                             <li><Link href="/about" className="hover:text-white transition-colors">আমাদের সম্পর্কে</Link></li>
+                            <li><Link href="/team" className="hover:text-white transition-colors">আমাদের টিম</Link></li>
                             <li><Link href="/contact" className="hover:text-white transition-colors">যোগাযোগ</Link></li>
                             <li><Link href="/privacy" className="hover:text-white transition-colors">গোপনীয়তা নীতি</Link></li>
                             <li><Link href="/terms" className="hover:text-white transition-colors">ব্যবহারের শর্তাবলী</Link></li>
@@ -67,7 +68,7 @@ const Footer = () => {
                 {/* Bottom Bar */}
                 <div className="mt-3 pt-4 border-t border-gray-600 text-center text-base md:text-lg text-gray-200 ">
                     <p>© {currentYear} বাংলা স্টার নিউজ | সর্বস্বত্ব সংরক্ষিত।</p>
-                    <p className="mt-2">Developed and maintained by Mathmozo It</p>
+
                 </div>
             </Container>
         </footer>

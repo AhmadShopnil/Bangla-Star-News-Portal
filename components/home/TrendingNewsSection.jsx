@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Container from "../common/Container";
+import Link from "next/link";
 
 const newsList = [
   {
@@ -91,36 +92,36 @@ export default function TrendingNews() {
     <Container className="">
       <div className="   ">
         <div className="grid md:grid-cols-3 gap-2 md:gap-4 lg:gap-6">
-          {newsList?.slice(0,6)?.map((news, i) => (
+          {newsList?.slice(0, 6)?.map((news, i) => (
             <div key={i} className="flex justify-between gap-2 border-b pb-4 cursor-pointer group">
-           
-                  {/* Text */}
-                  <div className="flex-1">
-                    <h3 className="text-gray-600 text-base md:text-[22px] leading-[28px] group-hover:text-primary font-semibold ">
-                      {news.title}
-                    </h3>
 
-                   
-                      <p className="text-gray-500 text-base md:text-xl mt-2 line-clamp-3">
-                        {news?.details}
-                      </p>
-                  
-                  </div>
+              {/* Text */}
+              <div className="flex-1">
+                <Link href={`/`} className="text-gray-600 text-lg md:text-[22px] leading-[24px] md:leading-[26px] group-hover:text-primary font-semibold ">
+                  {news.title}
+                </Link>
 
-                  {/* Image Right Side */}
-                  <div className="w-[120px] h-[100px] lg:w-[200px] lg:h-[150px] relative flex-shrink-0">
-                    <Image
-                      src={news.image}
-                      alt={news.title}
-                      fill
-                      className="object-cover"
-                    />
-                  </div>
-                </div>
-           
+
+                <p className="text-gray-500 text-base md:text-xl mt-2 line-clamp-2 md:line-clamp-3">
+                  {news?.details}
+                </p>
+
+              </div>
+
+              {/* Image Right Side */}
+              <div className="w-[120px] h-[100px] lg:w-[200px] lg:h-[150px] relative flex-shrink-0">
+                <Image
+                  src={news.image}
+                  alt={news.title}
+                  fill
+                  className="object-cover"
+                />
+              </div>
+            </div>
+
           ))}
         </div>
-         {/* <div className="grid md:grid-cols-4 gap-2 mt-4 ">
+        {/* <div className="grid md:grid-cols-4 gap-2 mt-4 ">
           {newsList?.slice(1,9)?.map((news, i) => (
             <div key={i} className="flex justify-between gap-4 border-b py-3 cursor-pointer group">
            
