@@ -59,9 +59,13 @@ export default async function Home() {
 
 
       <main className="pb-12 space-y-4">
-        {/* Dynamic Hero Row matching reference */}
+        {/* top news section w of home page start */}
+
         <HeronNewsSection />
         <TrendingNewsSection />
+        {/* top news section w of home page End */}
+
+
         <ThumbnailNewsSection
           title={"এক্সক্লুসিভ"}
           news={lifestyleNews}

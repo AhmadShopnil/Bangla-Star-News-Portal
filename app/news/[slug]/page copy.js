@@ -215,16 +215,15 @@ export default async function NewsDetailPage({ params }) {
                                 </div>
 
                                 {/* Main Image */}
-                            <div className="w-full overflow-hidden rounded-md">
+                                <div className="relative h-[300px] md:h-[600px] w-full overflow-hidden shadow-inner">
                                     <Image
                                         src={news?.featured_image}
                                         alt={news?.name || "news image"}
-                                        width={1200}
-                                        height={675}
+                                        fill
                                         priority
-                                        className="w-full h-auto object-contain"
+                                        className="object-fit"
                                     />
-                                    </div>
+                                </div>
 
                                 {/* Content */}
                                 <div>
