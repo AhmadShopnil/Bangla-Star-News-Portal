@@ -52,7 +52,7 @@ export default async function VideoListPage({ searchParams }) {
                                     <div className="relative aspect-video w-full overflow-hidden bg-gray-900">
                                         <Image
                                             src={getYoutubeThumbnail(videoUrl)}
-                                            alt={video.name}
+                                            alt={video?.name}
                                             fill
                                             className="object-cover group-hover:scale-110 transition-transform duration-500"
                                         />
