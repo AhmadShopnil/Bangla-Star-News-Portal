@@ -227,16 +227,8 @@ export default async function NewsDetailPage({ params }) {
                                     </div>
 
                                 {/* Content */}
-                                <div>
-                                    <div
-                                        className='text-base md:text-xl lg:md:text-[22px] text-gray-800 font-medium'
-                                        dangerouslySetInnerHTML={{
-                                            __html: news.description || '<p>No content available.</p>'
-                                        }}
-                                    ></div>
-                                </div>
+                                    <div className="  text-gray-800" dangerouslySetInnerHTML={{ __html: news?.description || '<p>No content available.</p>' }} />
                             </div>
-
                             {/* Share and Tags */}
                             <div className="pt-10 border-t border-slate-300 mt-10">
                                 <div className="bg-gradient-to-r from-blue-50 to-gray-50 rounded-sm p-6 md:p-8 shadow-sm">
