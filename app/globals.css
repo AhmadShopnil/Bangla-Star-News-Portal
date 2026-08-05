@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@plugin "@tailwindcss/typography";
 
 @theme {
   --color-primary: #EE1D23;
@@ -38,7 +39,9 @@
   .section-title {
     @apply text-2xl font-black text-gray-900 border-t-4 border-primary pt-2 mb-6 uppercase tracking-tight;
   }
-}
+
+  /* New class for CMS content */
+  .cms-content {}}
 
 /* Animation for news ticker */
 @keyframes ticker {
